@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.DAO;
 using PhongKhamThuY2018.Code;
 using PhongKhamThuY2018.Models;
 using System;
@@ -23,22 +24,32 @@ namespace PhongKhamThuY2018.Controllers
 
         public ActionResult Index(LoginViewModel model)
         {
-            bool result = new AccountModel().Login(model.UserName,model.Pass);
-
-            if(result && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                SessionHelper.SetSession(new UserSession() { UserName=model.UserName });
+                var userDao = new UserDAO();
 
-                return RedirectToAction("Home", "Index");
+                bool result = userDao.Login(model.UserName, model.Pass);
+
+                if (result)
+                {
+                    //Session giữ userid, userDaoname
+                    var user=userDao.GetById(model.UserName);
+
+                    var usersession = new UserSession();
+
+                    usersession.UserID = user.Id;
+                    usersession.UserName = user.UserName;
+
+                    Session.Add(CommonConstants.USER_SESSION, usersession);
+
+                    return RedirectToAction("Index", "Category");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng !!");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("","Tên đăng nhập hoặc mật khẩu không đúng !!");
-            }
-
-
             return View(model);
-
         }
-	}
+    }
 }

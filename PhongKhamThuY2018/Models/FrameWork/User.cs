@@ -6,14 +6,16 @@ namespace Models.FrameWork
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ACCOUNT")]
-    public partial class ACCOUNT
+    [Table("User")]
+    public partial class User
     {
-        [Key]
-        [StringLength(50)]
-        public string USERNAME { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
 
         [StringLength(50)]
-        public string PASSWORD { get; set; }
+        public string UserName { get; set; }
+
+        [StringLength(50)]
+        public string PassWord { get; set; }
     }
 }

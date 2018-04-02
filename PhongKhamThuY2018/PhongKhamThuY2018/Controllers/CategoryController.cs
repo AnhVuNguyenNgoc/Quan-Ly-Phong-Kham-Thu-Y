@@ -17,8 +17,6 @@ namespace PhongKhamThuY2018.Controllers
 
             var model = Cate.ListAll();
 
-
-
             return View(model);
         }
 

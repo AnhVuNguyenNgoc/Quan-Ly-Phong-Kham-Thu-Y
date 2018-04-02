@@ -13,10 +13,17 @@ namespace Models.FrameWork
         }
 
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .Property(e => e.UserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.PassWord)
+                .IsUnicode(false);
         }
     }
 }

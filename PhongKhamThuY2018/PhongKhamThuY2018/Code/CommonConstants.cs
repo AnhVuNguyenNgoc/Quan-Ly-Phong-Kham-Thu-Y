@@ -5,11 +5,8 @@ using System.Web;
 
 namespace PhongKhamThuY2018.Code
 {
-    [Serializable]
-    public class UserSession
+    public static class CommonConstants
     {
-        public int UserID { get; set; }
-
-        public string UserName { get; set; }
+        public const string USER_SESSION = "USER_SEESION";
     }
 }

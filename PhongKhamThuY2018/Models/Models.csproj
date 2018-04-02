@@ -51,9 +51,10 @@
     <Compile Include="AccountModel.cs" />
     <Compile Include="CategoryModel.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="FrameWork\ACCOUNT.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="FrameWork\Category.cs" />
     <Compile Include="FrameWork\PhongKhamDbContext.cs" />
+    <Compile Include="FrameWork\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

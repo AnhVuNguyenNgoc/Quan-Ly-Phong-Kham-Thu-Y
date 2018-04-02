@@ -11,5 +11,6 @@ namespace PhongKhamThuY2018.Models
 
         [Required]
         public string  Pass { get; set; }
+
     }
 }

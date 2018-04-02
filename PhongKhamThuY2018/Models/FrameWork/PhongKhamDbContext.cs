@@ -12,6 +12,7 @@ namespace Models.FrameWork
         {
         }
 
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

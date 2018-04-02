@@ -1,4 +1,5 @@
 ﻿using Models;
+using PhongKhamThuY2018.Code;
 using PhongKhamThuY2018.Models;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,25 @@ namespace PhongKhamThuY2018.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
 
         public ActionResult Index(LoginViewModel model)
         {
-            var result = new AccountModel().Login(model.UserName,model.Pass);
+            bool result = new AccountModel().Login(model.UserName,model.Pass);
 
             if(result && ModelState.IsValid)
             {
+                SessionHelper.SetSession(new UserSession() { UserName=model.UserName });
 
+                return RedirectToAction("Home", "Index");
             }
             else
             {
-
+                ModelState.AddModelError("","Tên đăng nhập hoặc mật khẩu không đúng !!");
             }
 
+
+            return View(model);
 
         }
 	}

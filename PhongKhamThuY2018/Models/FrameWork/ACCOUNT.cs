@@ -10,12 +10,9 @@ namespace Models.FrameWork
     public partial class ACCOUNT
     {
         [Key]
-        [Column(Order = 0)]
         [StringLength(50)]
         public string USERNAME { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
         [StringLength(50)]
         public string PASSWORD { get; set; }
     }

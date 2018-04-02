@@ -49,8 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
+    <Compile Include="CategoryModel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FrameWork\ACCOUNT.cs" />
+    <Compile Include="FrameWork\Category.cs" />
     <Compile Include="FrameWork\PhongKhamDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

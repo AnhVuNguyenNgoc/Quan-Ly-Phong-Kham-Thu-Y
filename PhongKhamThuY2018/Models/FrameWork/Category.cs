@@ -1,4 +1,4 @@
-namespace Models.FrameWork
+﻿namespace Models.FrameWork
 {
     using System;
     using System.Collections.Generic;
@@ -9,17 +9,21 @@ namespace Models.FrameWork
     [Table("Category")]
     public partial class Category
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [StringLength(50)]
+        [Display(Name="Tên thuốc")]
         public string Name { get; set; }
 
-        public bool? Status { get; set; }
+         [Display(Name = "Còn sử dụng")]
+        public bool Status { get; set; }
 
         [Column(TypeName = "date")]
+
         public DateTime? NgayNhap { get; set; }
 
+         [Display(Name = "Số lượng")]
         public int? SoLuong { get; set; }
     }
 }

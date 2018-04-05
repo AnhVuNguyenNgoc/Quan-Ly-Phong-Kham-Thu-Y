@@ -16,7 +16,15 @@ namespace PhongKhamThuY2018.Controllers
         // GET: /Login/
         public ActionResult Index()
         {
-            return View();
+            if(Session[CommonConstants.USER_SESSION]!=null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [HttpPost]

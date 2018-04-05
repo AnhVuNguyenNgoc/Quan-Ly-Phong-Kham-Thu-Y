@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿
+
+<!doctype html>
 <html lang="en">
 <head>
     <title>Tables | Klorofil - Free Bootstrap Dashboard Template</title>
@@ -31,13 +33,8 @@
                 <div class="navbar-btn">
                     <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
                 </div>
-                <form class="navbar-form navbar-left">
-                    <div class="input-group">
-                        <input type="text" value="" class="form-control" placeholder="Tìm kiếm cái gỉ">
-                        <span class="input-group-btn"><button type="button" class="btn btn-primary">Tìm kiếm</button></span>
-                    </div>
-                </form>
-               
+              
+
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -64,15 +61,19 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            @{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="/assets/img/user.png" class="img-circle" alt="Avatar"> <span>
+                                    @(username.UserName)
+                                </span> <i class="icon-submenu lnr lnr-chevron-down"></i>
+                            </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-user"></i> <span>Thông tin</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Tin nhắn</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-exit"></i> <span>Đăng xuất</span></a></li>
                             </ul>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -93,7 +94,7 @@
                                 </ul>
                             </div>
                         </li>
-                        
+
                         <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Quản lý tài chính</span></a></li>
                         <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Quản lý khách hàng</span></a></li>
                         <li><a href="notifications.html" class=""><i class="lnr lnr-diamond "></i> <span>Quản lý thú cưng</span></a></li>
@@ -101,7 +102,7 @@
                             <a href="#subKho" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Quản lý kho</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="subKho" class="collapse ">
                                 <ul class="nav">
-                                    <li><a href="page-profile.html" class="">Kho dược</a></li>
+                                    <li><a href="/Category/Index" class="">Kho thuốc</a></li>
                                     <li><a href="page-login.html" class="">Kho vật tự</a></li>
 
                                 </ul>
@@ -117,7 +118,7 @@
                                 </ul>
                             </div>
                         </li>
-              
+
                     </ul>
                 </nav>
             </div>
@@ -127,9 +128,9 @@
         <div class="main">
             <!-- MAIN CONTENT -->
             <div class="main-content">
-
-              @RenderBody()
-
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
             </div>
             <!-- END MAIN CONTENT -->
         </div>
@@ -146,6 +147,12 @@
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#AlertClass').removeClass('hide');
+            $('#AlertClass').delay(2000).slideUp(500);
+        })
+    </script>
     <script src="/assets/scripts/klorofil-common.js"></script>
 </body>
 </html>

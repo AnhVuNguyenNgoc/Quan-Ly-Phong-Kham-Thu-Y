@@ -1,10 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model Models.FrameWork.Category
+@model Models.FrameWork.THUOC
 
 <h3 class="page-title">Sửa thuốc</h3>
 <!-- BORDERED TABLE -->
@@ -18,39 +17,56 @@
             {
 
                 @Html.AntiForgeryToken()
-
-
                 <div class="form-group">
-
-                    @Html.LabelFor(model => model.Name)
-                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Tên thuốc" })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.MATHUOC)
+                    @Html.TextBoxFor(model => model.MATHUOC, new { @class = "form-control", @placeholder = "Mã thuốc", @readonly = "readonly" })
+                    @Html.ValidationMessageFor(model => model.MATHUOC, "", new { @class = "text-danger" })
 
                 </div>
 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TENTHUOC)
+                    @Html.TextBoxFor(model => model.TENTHUOC, new { @class = "form-control", @placeholder = "Tên thuốc" })
+                    @Html.ValidationMessageFor(model => model.TENTHUOC, "", new { @class = "text-danger" })
+                </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SoLuong)
-                    @Html.TextBoxFor(model => model.SoLuong, new { @class = "form-control", @placeholder = "Số lượng thuốc" })
-                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.LOAITHUOC.TENLOAITHUOC)
+                    @Html.DropDownListFor(m => m.MALOAITHUOC, ViewBag.ListLoaiThuoc as SelectList, "--Chọn 1 loại thuốc-- ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LOAITHUOC.TENLOAITHUOC)
 
 
                 </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SOLUONG)
+                    @Html.TextBoxFor(model => model.SOLUONG, new { @class = "form-control", @placeholder = "Số lượng thuốc" })
+                    @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger" })
 
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HUONGDANSUDUNG)
+                    @Html.TextBoxFor(model => model.HUONGDANSUDUNG, new { @class = "form-control", @placeholder = "Hướng dẫn sử dụng" })
+                    @Html.ValidationMessageFor(model => model.HUONGDANSUDUNG, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DONVITHUOC.TENDONVI)
+
+                    @Html.DropDownListFor(m => m.MADONVI, ViewBag.ListThuoc as SelectList, "--Chọn 1 đơn vị-- ", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.DONVITHUOC.TENDONVI)
+
+                </div>
                 <div class="form-group">
                     <div class="form-check">
-
-
-                        @Html.CheckBoxFor(model => model.Status, new { @class = "form-check-input", @placeholder = "Số lượng thuốc" })
-                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-
-                        @Html.LabelFor(model => model.Status, new { @class = "form-check-label" })
-
+                        @Html.CheckBoxFor(model => model.TINHTRANG, new { @class = "form-check-input", @placeholder = "Số lượng thuốc" })
+                        @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.TINHTRANG, new { @class = "form-check-label" })
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success">Sửa</button>
-                <a href="/Category/Index" class="btn btn-default">Hủy</a>
+                <button type="submit" class="btn btn-success"><i class="fa fa-pencil modifier-icon"></i>Sửa</button>
+                <a href="/Category/Index" class="btn btn-default"><i class="lnr lnr-cross-circle modifier-icon"></i>Hủy</a>
             }
 
         </div>

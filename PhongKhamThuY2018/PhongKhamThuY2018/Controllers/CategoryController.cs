@@ -11,83 +11,107 @@ namespace PhongKhamThuY2018.Controllers
 {
     public class CategoryController : BaseController
     {
+
+
         //
         // GET: /Category/
-        public ActionResult Index(string searchString,int page=1,int pageSize=8)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 3)
         {
-            var Cate = new CategoryDAO();
+            var Cate = new MedicalDAO();
 
-            var model = Cate.ListAllPaging(searchString,page, pageSize);
+            var model = Cate.ListAllPaging(searchString, page, pageSize);
 
             ViewBag.searchString = searchString;
+
             return View(model);
         }
 
-    
+
         //
         // GET: /Category/Create
         public ActionResult Create()
         {
+            var catDAO = new MedicalDAO();
+
+
+            List<DONVITHUOC> ListThuoc = catDAO.ListAllThuoc();
+            List<LOAITHUOC> ListLoaiThuoc = catDAO.ListAllLoaiThuoc();
+
+            ViewBag.ListThuoc = new SelectList(ListThuoc,"MADONVI", "TENDONVI");
+            ViewBag.ListLoaiThuoc = new SelectList(ListLoaiThuoc, "MALOAITHUOC", "TENLOAITHUOC");
+
             return View();
         }
 
         //
         // POST: /Category/Create
         [HttpPost]
-        public ActionResult Create(Category entity)
+        public ActionResult Create(THUOC entity)
         {
-           
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                var catDAO = new MedicalDAO();
+
+                entity.NGAYNHAP = DateTime.Now;
+
+                int result = catDAO.Insert(entity);
+
+                if (result > 0)
                 {
-                    var catDAO = new CategoryDAO();
+                    //Xuất thông báo thành công notification
 
-                    entity.NgayNhap = DateTime.Now;
-                    int result = catDAO.Insert(entity);
+                    SetAlert("Thêm " + entity.TENTHUOC + " thành công !!", "success");
+                    return RedirectToAction("Index", "Category");
 
-                    if (result > 0)
-                    {
-                        //Xuất thông báo thành công notification
-
-                        SetAlert("Thêm "+entity.Name+" thành công !!","success");
-                        return RedirectToAction("Index", "Category");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Thêm không thành công !!");
-                    }
                 }
-                // TODO: Add insert logic here
+                else
+                {
+                    ModelState.AddModelError("", "Thêm không thành công !!");
+                }
+            }
+            // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            
-    
+            return RedirectToAction("Index");
+
+
         }
 
         //
         // GET: /Category/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = new CategoryDAO().ViewDetail(id);
+            var model = new MedicalDAO().ViewDetail(id);
+
+            var catDAO = new MedicalDAO();
+
+            List<DONVITHUOC> ListThuoc = catDAO.ListAllThuoc();
+            List<LOAITHUOC> ListLoaiThuoc = catDAO.ListAllLoaiThuoc();
+
+            ViewBag.ListThuoc = new SelectList(ListThuoc, "MADONVI", "TENDONVI",model.MADONVI);
+
+            ViewBag.ListLoaiThuoc = new SelectList(ListLoaiThuoc, "MALOAITHUOC", "TENLOAITHUOC", model.MALOAITHUOC);
+
             return View(model);
-            
+
         }
 
         //
         // POST: /Category/Edit/5
         [HttpPost]
-        public ActionResult Edit(Category cat)
+        public ActionResult Edit(THUOC cat)
         {
             if (ModelState.IsValid)
             {
-               var dao=new CategoryDAO();
+                var dao = new MedicalDAO();
 
-               bool result = dao.Update(cat);
+                bool result = dao.Update(cat);
 
                 if (result)
                 {
                     //Xuất thông báo thành công notification
 
-                    SetAlert("Sửa " + cat.Name + " thành công !!", "success");
+                    SetAlert("Sửa " + cat.TENTHUOC + " thành công !!", "success");
+
                     return RedirectToAction("Index", "Category");
                 }
                 else

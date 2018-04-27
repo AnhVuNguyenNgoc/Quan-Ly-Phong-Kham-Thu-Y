@@ -33,7 +33,7 @@
                 <div class="navbar-btn">
                     <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
                 </div>
-              
+
 
                 <div id="navbar-menu">
                     <ul class="nav navbar-nav navbar-right">
@@ -61,10 +61,10 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            @{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }
+                            @*@{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }*@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/img/user.png" class="img-circle" alt="Avatar"> <span>
-                                    @(username.UserName)
+                                    @*@(username.UserName)*@
                                 </span> <i class="icon-submenu lnr lnr-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu">
@@ -86,10 +86,10 @@
                     <ul class="nav">
                         <li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>Trang chủ</span></a></li>
                         <li>
-                            <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>Quản lý khám bệnh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subPages" class="collapse ">
+                            <a href="#subPages" data-toggle="collapse" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class=active" : "class=collapsed")><i class="lnr lnr-pencil"></i> <span>Quản lý khám bệnh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subPages" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class='collapse in'" : "class=collapse")>
                                 <ul class="nav">
-                                    <li><a href="page-profile.html" class="">Kê toa</a></li>
+                                    <li><a href="@Url.Action("Index", "Prescription")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class=active" : "")>Lập bệnh án</a></li>
                                     <li><a href="page-login.html" class="">Dánh sách toa thuốc</a></li>
                                 </ul>
                             </div>
@@ -99,10 +99,10 @@
                         <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Quản lý khách hàng</span></a></li>
                         <li><a href="notifications.html" class=""><i class="lnr lnr-diamond "></i> <span>Quản lý thú cưng</span></a></li>
                         <li>
-                            <a href="#subKho" data-toggle="collapse" class="collapsed"><i class="lnr lnr-store"></i> <span>Quản lý kho</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subKho" class="collapse ">
+                            <a href="#subKho" data-toggle="collapse" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class=active" : "class=collapsed")><i class="lnr lnr-store"></i> <span>Quản lý kho</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subKho" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class='collapse in'" : "class=collapse")>
                                 <ul class="nav">
-                                    <li><a href="/Category/Index" class="">Kho thuốc</a></li>
+                                    <li><a href="@Url.Action("Index", "Category")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class=active" : "")>Kho thuốc</a></li>
                                     <li><a href="page-login.html" class="">Kho vật tự</a></li>
 
                                 </ul>
@@ -151,8 +151,10 @@
         $(document).ready(function () {
             $('#AlertClass').removeClass('hide');
             $('#AlertClass').delay(2000).slideUp(500);
-        })
+        });
     </script>
-    <script src="/assets/scripts/klorofil-common.js"></script>
+   
+    @RenderSection("ClientSciptFile", false)
+
 </body>
 </html>

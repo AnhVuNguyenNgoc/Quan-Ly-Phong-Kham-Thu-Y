@@ -56,12 +56,43 @@
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\CategoryMedicalDAO.cs" />
+    <Compile Include="DAO\MedicalDAO.cs" />
+    <Compile Include="DAO\CustomerDAO.cs" />
+    <Compile Include="DAO\PetDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
-    <Compile Include="FrameWork\Category.cs" />
+    <Compile Include="FrameWork\BENHAN.cs" />
+    <Compile Include="FrameWork\CHITIETBENH.cs" />
+    <Compile Include="FrameWork\CHITIETTOA.cs" />
+    <Compile Include="FrameWork\CHITIETXN.cs" />
+    <Compile Include="FrameWork\CHUYENMON.cs" />
+    <Compile Include="FrameWork\CTEKIP.cs" />
+    <Compile Include="FrameWork\CTSOTIEMPHONG.cs" />
+    <Compile Include="FrameWork\DONVITHUOC.cs" />
+    <Compile Include="FrameWork\EKIP.cs" />
+    <Compile Include="FrameWork\GIAKHAMBENH.cs" />
+    <Compile Include="FrameWork\KHACHHANG.cs" />
+    <Compile Include="FrameWork\LICHKHAM.cs" />
+    <Compile Include="FrameWork\LICHSUKHAM.cs" />
+    <Compile Include="FrameWork\LOAITHUOC.cs" />
+    <Compile Include="FrameWork\LOAIXETNGHIEM.cs" />
+    <Compile Include="FrameWork\NGUOIDUNG.cs" />
+    <Compile Include="FrameWork\NHANVIEN.cs" />
+    <Compile Include="FrameWork\NOITRU.cs" />
+    <Compile Include="FrameWork\PHAUTHUAT.cs" />
+    <Compile Include="FrameWork\PHIEUXETNGHIEM.cs" />
     <Compile Include="FrameWork\PhongKhamDbContext.cs" />
-    <Compile Include="FrameWork\User.cs" />
+    <Compile Include="FrameWork\SOTIEMPHONG.cs" />
+    <Compile Include="FrameWork\sysdiagrams.cs" />
+    <Compile Include="FrameWork\THEODOITHU.cs" />
+    <Compile Include="FrameWork\THU.cs" />
+    <Compile Include="FrameWork\THUOC.cs" />
+    <Compile Include="FrameWork\TIEMPHONG.cs" />
+    <Compile Include="FrameWork\TOATHUOC.cs" />
+    <Compile Include="FrameWork\VATTU.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AddingMedicalModel.cs" />
+    <Compile Include="ViewModel\SearchingPetModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +101,7 @@
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

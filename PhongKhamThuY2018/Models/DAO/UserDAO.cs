@@ -16,22 +16,22 @@ namespace Models.DAO
             dbContext = new PhongKhamDbContext();
         }
 
-        public int Insert(User entity)
+        public int Insert(NGUOIDUNG entity)
          {
-             dbContext.User.Add(entity);
+             dbContext.NGUOIDUNG.Add(entity);
              dbContext.SaveChanges();
 
-             return entity.Id;
+             return entity.ID;
          }
 
-        public User GetById(string UserName)
+        public NGUOIDUNG GetById(string username)
         {
-            return dbContext.User.SingleOrDefault(x=>x.UserName==UserName) ;
+            return dbContext.NGUOIDUNG.SingleOrDefault(x => x.UserName == username);
         }
 
         public bool Login(string username, string pass)
         {
-            var result = dbContext.User.Count(x => x.UserName == username && x.PassWord == pass);
+            var result = dbContext.NGUOIDUNG.Count(x => x.UserName == username && x.PassWord == pass);
 
             if(result >0)
             {

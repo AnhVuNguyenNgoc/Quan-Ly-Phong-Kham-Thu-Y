@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Models.FrameWork.Category>
+﻿@model PagedList.IPagedList<Models.FrameWork.THUOC>
 @using PagedList.Mvc
 
 
@@ -28,13 +28,13 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <input type="text" value="@ViewBag.searchString" name="searchString" class="form-control" placeholder="Nhập tên thuốc cần tìm">
-                        <span class="input-group-btn"><button type="submit" class="btn btn-primary">Tìm kiếm</button></span>
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>Tìm kiếm</button></span>
                     </div>
                 </div>
             }
 
             <div class="row">
-                <a href="/Category/Create" class="btn btn-success">Thêm mới</a>
+                <a href="/Category/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</a>
 
             </div>
 
@@ -45,6 +45,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Tên thuốc</th>
+                        <th>Loại thuốc</th>
+                        <th>Đơn vị</th>
                         <th>Ngày nhập</th>
                         <th>Số lượng</th>
                         <th>Trạng thái</th>
@@ -55,12 +57,14 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
-                            <td>@item.Name</td>
-                            <td>@item.NgayNhap.Value.ToString("dd/MM/yyyy")</td>
-                            <td>@item.SoLuong</td>
+                            <td>@item.MATHUOC</td>
+                            <td>@item.TENTHUOC</td>
+                            <td>@item.LOAITHUOC.TENLOAITHUOC</td>
+                            <td>@item.DONVITHUOC.TENDONVI</td>
+                            <td>@item.NGAYNHAP.ToString("dd/MM/yyyy")</td>
+                            <td>@item.SOLUONG</td>
                             <td>
-                                @if (@item.Status == true)
+                                @if (@item.TINHTRANG == true)
                                 {
                                     <span class="badge bg-success">
                                         Còn sử dụng
@@ -74,7 +78,7 @@
                                 }
                             </td>
                             <td>
-                                <a href="/Category/Edit/@item.Id" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="/Category/Edit/@item.MATHUOC" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
                             </td>
 
 

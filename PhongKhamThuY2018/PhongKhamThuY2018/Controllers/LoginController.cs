@@ -1,4 +1,4 @@
-﻿using Models;
+﻿
 using Models.DAO;
 using PhongKhamThuY2018.Code;
 using PhongKhamThuY2018.Models;
@@ -45,7 +45,7 @@ namespace PhongKhamThuY2018.Controllers
 
                     var usersession = new UserSession();
 
-                    usersession.UserID = user.Id;
+                    usersession.UserID = user.ID;
                     usersession.UserName = user.UserName;
 
                     Session.Add(CommonConstants.USER_SESSION, usersession);

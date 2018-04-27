@@ -1,0 +1,550 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 class="page-title">Lập bệnh án</h3>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thú cưng</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="inputPassword4">Tên Pet</label>
+                            <input type="text" class="form-control" name="CurrentPetName" placeholder="Tên pet" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" style="margin-top:26px;" data-toggle="modal" data-target="#PickPet">
+                                <i class="lnr lnr-select modifier-icon"></i>  Chọn
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success" style="margin-top:26px;" data-toggle="modal" data-target="#exampleModal">
+                                <i class="lnr lnr-plus-circle modifier-icon"></i>Thêm
+                            </button>
+                        </div>
+                        <div class="modal fade" id="PickPet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Chọn thú cưng</h3>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+
+                                            <div class="form-row row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="inputPassword4">Tên Pet</label>
+                                                    <input type="text" class="form-control" name="SearchPetName" placeholder="Tên pet" value="ki ki">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="inputPassword4">Loài</label>
+                                                    <input type="text" class="form-control" name="SearchPetKind" placeholder="Giong loài pet" value="chó fox">
+                                                </div>
+
+                                                <button style="margin-top:1.75em" type="button" id="btn-search-pet" class="btn btn-primary">Tìm</button>
+
+                                            </div>
+
+
+
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên pet</th>
+                                                        <th>Tên chủ</th>
+                                                        <th>Loài</th>
+                                                        <th>Màu lông</th>
+                                                        <th>Gioi tính</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="SearchPetTable"></tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                            <button type="button" id="btn-select-pet" class="btn btn-primary">Chọn</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="exampleModalLabel">Thêm thú cưng mới</h3>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+
+                                            <div class="form-row row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputPassword4">Tên chủ</label>
+                                                    <input type="text" class="form-control" value="Anh Vũ" name="CustomerName">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Địa chỉ</label>
+                                                    <input type="email" class="form-control" value="SGU" name="CustomerAddress">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputPassword4">Số điện thoại</label>
+                                                    <input type="text" class="form-control" value="0961013695" name="CustomerPhone">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="inputEmail4">Giới tính</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="CustomerGender" id="Male" value="Nam" checked>
+                                                        <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="CustomerGender" id="Female" value="Nữ">
+                                                        <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputPassword4">Tên Pet</label>
+                                                    <input type="text" class="form-control" value="Ki Ki" name="PetName">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Màu lông</label>
+                                                    <input type="email" class="form-control" value="Vàng nâu" name="PetSkin">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputPassword4">Loài</label>
+                                                    <input type="text" class="form-control" value="Chó Fox" name="PetKind">
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    <label for="inputEmail4">Giới tính</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="PetGender" id="Male" value="Đực" checked>
+                                                        <label class="form-check-label" for="inlineRadio1">Đực</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="PetGender" id="Female" value="Cái">
+                                                        <label class="form-check-label" for="inlineRadio2">Cái</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                            <button type="button" id="btn-add-customer" class="btn btn-primary">Thêm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail4">Màu lông</label>
+                        <input type="email" class="form-control" name="CurrentPetSkin" placeholder="Màu lông pet" readonly>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="inputPassword4">Loài</label>
+                        <input type="text" class="form-control" name="CurrentPetKind" placeholder="Giong loài pet" readonly>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail4">Giới tính</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="CurrentPetGender" id="Male" value="Đực">
+                            <label class="form-check-label" for="inlineRadio1">Đực</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="CurrentPetGender" id="Female" value="Cái">
+                            <label class="form-check-label" for="inlineRadio2">Cái</label>
+                        </div>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Chủ pet</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Tên chủ</label>
+                        <input type="text" class="form-control" name="CurrentCustomerName" placeholder="Tên chủ" readonly>
+                    </div>
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Địa chỉ</label>
+                        <input type="text" class="form-control" name="CurrentCustomerAddress" placeholder="Địa chỉ chủ" readonly>
+                    </div>
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Số điện thoại</label>
+                        <input type="text" class="form-control" name="CurrentCustomerPhone" placeholder="Số điện thoại chủ" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail4">Giới tính</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="CurrentCustomerGender" id="Male" value="Nam">
+                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="CurrentCustomerGender" id="Female" value="Nữ">
+                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">Toa thuốc</h3>
+            </div>
+            <div class="panel-body">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMedical">
+                    <i class="lnr lnr-plus-circle modifier-icon"></i> Thêm thuốc
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addMedical" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">Thêm thuốc</h3>
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="form-group ">
+                                        <label for="LoaiThuoc">Loại thuốc</label>
+                                        <select class="form-control" id="CategoryMedical" >
+                                            <option>--Chọn loại thuốc--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="TenThuoc">Tên thuốc</label>
+                                        <select class="form-control" id="MedicalName" >
+                                            <option>--Chọn thuốc--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ghi chú</label>
+                                        <input type="email" class="form-control" value="uống sau khi ăn" name="MedicalNote">
+                                    </div>
+
+                                    <div class="form-row row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Số lượng</label>
+                                            <input type="email" class="form-control" value="100" name="MedicalQuantity">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Đơn vị</label>
+                                            <input type="email" class="form-control" value="Vỉ" name="MedicalUnit" readonly>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Gía tiền</label>
+                                            <input type="text" class="form-control" value="10000" name="MedicalPrice" readonly>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Hướng dẫn</label>
+                                            <input type="text" class="form-control" value="uống nước nguội" name="MedicalInstruction" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                <button type="button" id="btn-add-medical" class="btn btn-primary">Thêm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tên thuốc</th>
+                        <th>Loại thuốc</th>
+                        <th>Đơn vị</th>
+                        <th>Số lượng</th>
+                        <th>Gía tiền(VNĐ)</th>
+                        <th>Hướng dẫn</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody id="AddingMedicalToPrescription"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section ClientSciptFile
+{
+    <script src="~/assets/scripts/notify.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            LoadCategoryMedicalForAddItem();
+            LoadMedicalForAddItem();
+            LoadChangedMedicalByCategory();
+            LoadChangedMedical();
+
+            function LoadCategoryMedicalForAddItem() {
+                var categoryMedicalOptions;
+                $.getJSON('/Prescription/GetListCategoryMedical', function (data) {
+                    categoryMedicalOptions += "<option>--Chọn loại thuốc--</option>"
+                    $.each(data, function (i, categoryMedical) {
+                        categoryMedicalOptions += "<option value='" + categoryMedical.MALOAITHUOC + "'>" + categoryMedical.TENLOAITHUOC + "</option>";
+                    });
+
+                    $('#CategoryMedical').html(categoryMedicalOptions);
+
+                });
+            }
+
+            function LoadMedicalForAddItem() {
+
+                var MedicalOptions;
+                $.getJSON('/Prescription/GetListMedicalForAddItem', function (data) {
+                    MedicalOptions += "<option>--Chọn loại thuốc--</option>"
+                    //dùng append()  jquery cũng dc
+                    $.each(data, function (i, Medical) {
+                        MedicalOptions += "<option value='" + Medical.MATHUOC + "'>" + Medical.TENTHUOC + "</option>";
+                    });
+
+                    $("#MedicalName").html(MedicalOptions);
+                });
+            }
+
+            function LoadChangedMedicalByCategory() {
+
+                $("#CategoryMedical").change(function () {
+
+                    $.getJSON('/Prescription/GetListMedicalByCategory', { idLoaiThuoc: $('#CategoryMedical').val() }, function (data) {
+
+                        $('#MedicalName').empty();
+
+                        $('#MedicalName').append("<option>--Chọn loại thuốc--</option>");
+
+                        $.each(data, function (i, Medical) {
+                            $('#MedicalName').append("<option value='" + Medical.MATHUOC + "'>" + Medical.TENTHUOC + "</option>");
+                        });
+                    });
+                });
+            }
+
+            function LoadChangedMedical() {
+
+                $("#MedicalName").change(function () {
+
+                    $.getJSON('/Prescription/GetMedicalById', { idMedical: $('#MedicalName').val() }, function (data) {
+
+                        $('input[name="MedicalUnit"]').val(data.TENDONVI);
+                        $('input[name="MedicalPrice"]').val(data.DONGIA);
+                        $('input[name="MedicalInstruction"]').val(data.HUONGDANSUDUNG);
+                    });
+                });
+            }
+
+
+            //$('#CurrentPetID').autocomplete({
+            //    source: function (request, response) {
+
+            //        var text = $('#CurrentPetID').val();
+
+            //        $.ajax({
+
+            //            type: "GET",
+            //            url: "/Prescription/GetListMedical",
+            //            data: { text: request.term },
+            //            success: function (data) {
+
+            //                response($.map(data, function (item) {
+            //                    return { label: item, value: item }
+            //                }))
+            //            }
+
+            //        })
+            //    }
+            //});
+
+            $('#btn-select-pet').click(function () {
+                var idSelectedPet = $('input[name="SelectedPet"]:checked').val();
+
+                //get pet trong db để search
+                $.ajax({
+                    type: "POST",
+                    url: "/Prescription/GetSelectedPet?idPet=" + idSelectedPet + "",
+                    success: function (data) {
+
+                        $.notify("Chọn thú cưng " + data.TENTHU + " thành công", { position: "top", autoHideDelay: 2000, className: "success" });
+
+                        $('input[name="CurrentPetName"]').val(data.TENTHU);
+                        $('input[name="CurrentPetSkin"]').val(data.MAULONG);
+                        $('input[name="CurrentPetKind"]').val(data.LOAI);
+                        $("input[name='CurrentPetGender'][value=" + data.GIOITINH + "]").attr('checked', 'checked');
+
+                        $('input[name="CurrentCustomerName"]').val(data.TENKH);
+                        $('input[name="CurrentCustomerPhone"]').val(data.SDT);
+                        $('input[name="CurrentCustomerAddress"]').val(data.DIACHIKH);
+                        $("input[name='CurrentCustomerGender'][value=" + data.GIOITINHKH + "]").attr('checked', 'checked');
+
+                    },
+                    error: function (error) {
+                        alert("thua chọn pet" + error);
+                    }
+                });
+            });
+
+            $('#btn-search-pet').click(function () {
+
+                var name = $('input[name="SearchPetName"]').val();
+                var kind = $('input[name="SearchPetKind"]').val();
+
+                //Xóa table SearchPetTable trc để khỏi bị trùng dữ liệu
+                $('#SearchPetTable tr').remove();
+
+                //get pet trong db để search
+                $.ajax({
+                    type: "POST",
+                    url: "/Prescription/SearchingListPet?namePet=" + name + "&nameKind=" + kind + "",
+                    success: function (pet) {
+
+                        var tong = 0;
+                        $.each(pet, function (index, value) {
+
+                            var tr = ' <tr><td>' + value.TENTHU + '</td> <td>' + value.TENKH + '</td> <td>' + value.LOAI + '</td><td>' + value.MAULONG + '</td><td>' + value.GIOITINH + '</td><td><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="SelectedPet" id="SelectedPet" value="' + value.MATHU + '"></div></td></tr>';
+
+                            $('#SearchPetTable').append(tr);
+
+                            tong++;
+                        });
+
+                        $.notify("Tìm thấy " + tong + " thú cưng", { position: "top", autoHideDelay: 2000, className: "info" });
+                    },
+                    error: function (error) {
+                        alert("thua chọn pet" + error);
+                    }
+                })
+
+            })
+
+            $('#btn-add-medical').click(function () {
+
+                var name = $('#MedicalName option:selected').text();
+                var category = $('#CategoryMedical option:selected').text();
+                var unit = $('input[name="MedicalUnit"]').val();
+                var quantity = $('input[name="MedicalQuantity"]').val();
+                var price = $('input[name="MedicalPrice"]').val();
+                var instruction = $('input[name="MedicalInstruction"]').val();
+                var note = $('input[name="MedicalNote"]').val();
+
+                var tr = ' <tr><td>' + name + '</td><td>' + category + '</td> <td>' + unit + '</td> <td>' + quantity + '</td><td>' + price + '</td> <td>' + instruction + '</td><td>' + note + '</td></tr>';
+
+                $('#AddingMedicalToPrescription').append(tr);
+            });
+
+            $('#btn-add-customer').click(function () {
+
+                var name = $('input[name="CustomerName"]').val();
+                var phone = $('input[name="CustomerPhone"]').val();
+                var address = $('input[name="CustomerAddress"]').val();
+                var gender = $('input[name="CustomerGender"]:checked').val();
+
+                var customer = {
+                    TEN: name,
+                    SDT: phone,
+                    DIACHI: address,
+                    GIOITINH: gender
+                };
+
+                var name = $('input[name="PetName"]').val();
+                var skin = $('input[name="PetSkin"]').val();
+                var kind = $('input[name="PetKind"]').val();
+                var gender = $('input[name="PetGender"]:checked').val();
+
+
+                //thêm khách hàng thành công thì mới lấy dc cái ID r add vào column MaKhach của Pet
+                $.ajax({
+                    type: "POST",
+                    url: "/Prescription/InsertCustomer",
+                    data: customer,
+                    success: function (customer) {
+
+                        //gửi thêm cái idkhach
+                        var pet = {
+                            TENTHU: name,
+                            LOAI: kind,
+                            MAULONG: skin,
+                            GIOITINH: gender,
+                            MAKH: customer.MAKH
+                        };
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Prescription/InsertPet",
+                            data: pet,
+                            success: function (pet) {
+                                $.notify("Thêm thú cưng thành công", { position: "top", autoHideDelay: 2000, className: "success" });
+
+                                $('input[name="CurrentPetName"]').val(pet.TENTHU);
+                                $('input[name="CurrentPetSkin"]').val(pet.MAULONG);
+                                $('input[name="CurrentPetKind"]').val(pet.LOAI);
+                                $("input[name='CurrentPetGender'][value=" + pet.GIOITINH + "]").attr('checked', 'checked');
+                            },
+                            error: function (pet) {
+                                alert("thua PET");
+                            }
+                        });
+
+                        $('input[name="CurrentCustomerName"]').val(customer.TEN);
+                        $('input[name="CurrentCustomerPhone"]').val(customer.SDT);
+                        $('input[name="CurrentCustomerAddress"]').val(customer.DIACHI);
+                        $("input[name='CurrentCustomerGender'][value=" + customer.GIOITINH + "]").attr('checked', 'checked');
+                    },
+                    error: function (customer) {
+                        alert("thua CUSTOMER");
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+
+
+}

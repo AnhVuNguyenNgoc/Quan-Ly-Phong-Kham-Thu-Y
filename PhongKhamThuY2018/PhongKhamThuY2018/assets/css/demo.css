@@ -16,3 +16,23 @@
   margin-left: 5px; }
 
 /*# sourceMappingURL=demo.css.map */
+
+.page-title{
+    margin-bottom:15px;
+}
+
+.main-content{
+    padding-top:15px;
+}
+
+label{
+    font-weight:500;
+}
+
+.panel .panel-heading .panel-title{
+    font-weight:600;
+}
+
+.modifier-icon{
+    margin-right:.4em;
+}

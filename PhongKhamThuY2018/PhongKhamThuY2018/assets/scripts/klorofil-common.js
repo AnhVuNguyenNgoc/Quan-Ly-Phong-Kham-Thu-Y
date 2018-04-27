@@ -1,7 +1,4 @@
-$(function () {
-
-   
-});
+﻿
 
 
 
@@ -11,9 +8,11 @@ $(document).ready(function () {
 	/*	TOP NAVIGATION AND LAYOUT
 	/*----------------------------------*/
 
-    $('#AlertClass').removeClass('hide');
-    $('#AlertClass').delay(1000).slideUp(500);
+      
 
+      
+
+    //-----------------------------
 
 	$('.btn-toggle-fullwidth').on('click', function() {
 		if(!$('body').hasClass('layout-fullwidth')) {

@@ -6,16 +6,19 @@ namespace Models.FrameWork
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("User")]
-    public partial class User
+    [Table("NGUOIDUNG")]
+    public partial class NGUOIDUNG
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string UserName { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string PassWord { get; set; }
+
+        public bool? TINHTRANG { get; set; }
     }
 }

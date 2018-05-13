@@ -20,8 +20,17 @@
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
+
+
+
 </head>
 <body>
+    @*<div class="loading" id="load_screen">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>*@
     <!-- WRAPPER -->
     <div id="wrapper">
         <!-- NAVBAR -->
@@ -61,16 +70,16 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            @*@{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }*@
+                            @{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/img/user.png" class="img-circle" alt="Avatar"> <span>
-                                    @*@(username.UserName)*@
+                                    @(username.UserName)
                                 </span> <i class="icon-submenu lnr lnr-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="lnr lnr-user"></i> <span>Thông tin</span></a></li>
                                 <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Tin nhắn</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-exit"></i> <span>Đăng xuất</span></a></li>
+                                <li><a href="@Url.Action("Logout", "Login")"><i class="lnr lnr-exit"></i> <span>Đăng xuất</span></a></li>
                             </ul>
                         </li>
 
@@ -84,27 +93,37 @@
             <div class="sidebar-scroll">
                 <nav>
                     <ul class="nav">
+
+                      
+                        @functions{
+                            public bool GetViewContextForController(string routeData)
+                            {
+                                if (ViewContext.RouteData.Values["controller"].ToString().Equals(routeData))
+                                {
+                                    return true;
+                                }
+                                return false;
+                            }
+                            public bool GetViewContextForAction(string actionData)
+                            {
+                                if (ViewContext.RouteData.Values["action"].ToString().Equals(actionData))
+                                {
+                                    return true;
+                                }
+                                return false;
+                            }
+                        }
+
                         <li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>Trang chủ</span></a></li>
                         <li>
-                            <a href="#subPages" data-toggle="collapse" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class=active" : "class=collapsed")><i class="lnr lnr-pencil"></i> <span>Quản lý khám bệnh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subPages" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class='collapse in'" : "class=collapse")>
+                            <a href="#subPages" data-toggle="collapse" @(GetViewContextForController("MedicalRecord") ? "class=active" : "class=collapsed")><i class="lnr lnr-pencil"></i> <span>Quản lý khám bệnh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subPages" @( GetViewContextForController("MedicalRecord") ? "class='collapse in'" : "class=collapse")>
                                 <ul class="nav">
-                                    <li><a href="@Url.Action("Index", "Prescription")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Prescription") ? "class=active" : "")>Lập bệnh án</a></li>
-                                    <li><a href="page-login.html" class="">Dánh sách toa thuốc</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                                    <li><a href="@Url.Action("Create", "MedicalRecord")" @(GetViewContextForAction("Create") && GetViewContextForController("MedicalRecord") ? "class=active" : "")>Lập bệnh án</a></li>
+                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(!GetViewContextForAction("Create") && GetViewContextForController("MedicalRecord") ? "class=active" : "") class="">Dánh sách bệnh án</a></li>
 
-                        <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Quản lý tài chính</span></a></li>
-                        <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Quản lý khách hàng</span></a></li>
-                        <li><a href="notifications.html" class=""><i class="lnr lnr-diamond "></i> <span>Quản lý thú cưng</span></a></li>
-                        <li>
-                            <a href="#subKho" data-toggle="collapse" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class=active" : "class=collapsed")><i class="lnr lnr-store"></i> <span>Quản lý kho</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subKho" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class='collapse in'" : "class=collapse")>
-                                <ul class="nav">
-                                    <li><a href="@Url.Action("Index", "Category")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Category") ? "class=active" : "")>Kho thuốc</a></li>
-                                    <li><a href="page-login.html" class="">Kho vật tự</a></li>
-
+                                    <li><a href="#">Lập phiếu xét nghiệm</a></li>
+                                    <li><a href="page-login.html" class="">Danh sách xét nghiệm</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -112,12 +131,31 @@
                             <a href="#subDichVu" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database "></i> <span>Quản lý dịch vụ</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="subDichVu" class="collapse ">
                                 <ul class="nav">
-                                    <li><a href="page-profile.html" class="">Phẫu thuật</a></li>
-                                    <li><a href="page-login.html" class="">Tiêm phòng</a></li>
+                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Create") && ViewContext.RouteData.Values["controller"].ToString().Equals("MedicalRecord") ? "class=active" : "")>Lập phiếu phấu thuật</a></li>
+                                    <li><a href="page-login.html" class="">Danh sách phẫu thuật</a></li>
+
+                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Create") && ViewContext.RouteData.Values["controller"].ToString().Equals("MedicalRecord") ? "class=active" : "")>Lập phiếu tiêm phòng</a></li>
+                                    <li><a href="page-login.html" class="">Sổ tiêm phòng</a></li>
 
                                 </ul>
                             </div>
                         </li>
+                        <li>
+                            <a href="#subKho" data-toggle="collapse" @( GetViewContextForController("Medical") || GetViewContextForController("CategoryMedical") ? "class=active" : "class=collapsed")><i class="lnr lnr-store"></i> <span>Quản lý kho thuốc</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subKho" @( GetViewContextForController("Medical") || GetViewContextForController("CategoryMedical") ? "class='collapse in'" : "class=collapse")>
+                                <ul class="nav">
+                                    <li><a href="@Url.Action("Index", "Medical")" @(GetViewContextForController("Medical") ? "class=active" : "")>Kho thuốc</a></li>
+                                    <li><a href="@Url.Action("Index", "CategoryMedical")" @(GetViewContextForController("CategoryMedical") ? "class=active" : "") class="">Kho loại thuốc</a></li>
+                                    <li><a href="page-login.html" class="">Đơn vị thuốc</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Quản lý khách hàng</span></a></li>
+                        <li><a href="@Url.Action("Index", "Pet")" @(GetViewContextForController("Pet") ? "class=active" : "") class=""><i class="lnr lnr-diamond "></i> <span>Quản lý thú cưng</span></a></li>
+                        <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Quản lý tài chính</span></a></li>
+
+
+
 
                     </ul>
                 </nav>
@@ -144,16 +182,20 @@
     </div>
     <!-- END WRAPPER -->
     <!-- Javascript -->
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
     <script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#AlertClass').removeClass('hide');
             $('#AlertClass').delay(2000).slideUp(500);
         });
+
     </script>
-   
+
     @RenderSection("ClientSciptFile", false)
 
 </body>

@@ -6,35 +6,34 @@ namespace Models.FrameWork
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CHITIETXN")]
-    public partial class CHITIETXN
+    [Table("CTTOATHUOC")]
+    public partial class CTTOATHUOC
     {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MAPHIEUXN { get; set; }
+        public int MATOA { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MAXN { get; set; }
+        public int MATHUOC { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(50)]
-        public string KETQUA { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SOLUONG { get; set; }
 
         [Key]
-        [Column(Order = 4, TypeName = "money")]
-        public decimal THANHTIEN { get; set; }
+        [Column(Order = 3)]
+        public double GIATIEN { get; set; }
 
-        public virtual LOAIXETNGHIEM LOAIXETNGHIEM { get; set; }
+        [Key]
+        [Column(Order = 4)]
+        public string GHICHU { get; set; }
 
-        public virtual PHIEUXETNGHIEM PHIEUXETNGHIEM { get; set; }
+        public virtual TOATHUOC TOATHUOC { get; set; }
+
+        public virtual THUOC THUOC { get; set; }
     }
 }

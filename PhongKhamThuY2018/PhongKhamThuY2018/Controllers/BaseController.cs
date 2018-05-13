@@ -37,7 +37,7 @@ namespace PhongKhamThuY2018.Controllers
             }
             else if (type == "error")
             {
-                TempData["AlertType"] = "alert-error";
+                TempData["AlertType"] = "alert-danger";
             }
         }
 	}

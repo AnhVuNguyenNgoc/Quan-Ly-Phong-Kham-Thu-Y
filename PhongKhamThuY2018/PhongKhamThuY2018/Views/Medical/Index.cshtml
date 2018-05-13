@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<Models.FrameWork.THUOC>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="page-title">Quản lý thuốc</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="col-md-12">
+                <div id="AlertClass" class="alert @TempData["AlertType"]  hide">@TempData["AlertMessage"]</div>
+            </div>
+        }
+
+        <div style="margin-bottom:2%;margin-top:2%">
+            @using (Html.BeginForm("Index", "Medical", FormMethod.Get))
+            {
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" value="@ViewBag.searchString" name="searchString" class="form-control" placeholder="Nhập tên thuốc cần tìm">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>Tìm kiếm</button></span>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <a href="/Medical/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</a>
+
+            </div>
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên thuốc</th>
+                        <th>Loại thuốc</th>
+                        <th>Đơn vị</th>
+                        <th>Ngày nhập</th>
+                        <th>Số lượng</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MATHUOC</td>
+                            <td>@item.TENTHUOC</td>
+                            <td>@item.LOAITHUOC.TENLOAITHUOC</td>
+                            <td>@item.DONVITHUOC.TENDONVI</td>
+                            <td>@item.NGAYNHAP.ToString("dd/MM/yyyy")</td>
+                            <td>@item.SOLUONG</td>
+                            <td>
+                                @if (@item.TINHTRANG == true)
+                                {
+                                    <span class="badge bg-success">
+                                        Còn sử dụng
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Hết sử dụng
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Category/Edit/@item.MATHUOC" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.searchString }), new PagedListRenderOptions()
+                {
+                    ContainerDivClasses = new[] { "pagination-container", "centerPage" }
+                })
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+@*<tr>
+        <td></td>
+        <td>@item.Status</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>*@
+
+

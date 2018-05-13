@@ -16,7 +16,6 @@ namespace Models.FrameWork
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MAKH { get; set; }
 
         [Required]
@@ -26,7 +25,7 @@ namespace Models.FrameWork
         public int TUOI { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(3)]
         public string GIOITINH { get; set; }
 
         [Required]

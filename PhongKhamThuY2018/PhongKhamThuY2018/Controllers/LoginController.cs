@@ -27,6 +27,12 @@ namespace PhongKhamThuY2018.Controllers
             
         }
 
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+           
+            return RedirectToAction("Index", "Home");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
 
@@ -50,7 +56,7 @@ namespace PhongKhamThuY2018.Controllers
 
                     Session.Add(CommonConstants.USER_SESSION, usersession);
 
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Medical");
                 }
                 else
                 {

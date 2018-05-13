@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using PhongKhamThuY2018.Models;
 
+
+using PagedList;
 namespace Models.DAO
 {
     public class PetDAO
@@ -22,6 +24,26 @@ namespace Models.DAO
 
              return entity.MATHU;
          }
+          public List<THU> ListAll()
+          {
+              var result = dbContext.THU.Include("KHACHHANG").ToList();
+
+              return result;
+          }
+
+          public IEnumerable<THU> ListAllPaging(string searchString, int page, int pageSize)
+          {
+              IQueryable<THU> model = dbContext.THU;
+
+              if (!string.IsNullOrEmpty(searchString))
+              {
+                  model = model.Where(x => x.TENTHU.Contains(searchString));
+              }
+              // else if thêm điều kiện
+
+              return model.OrderBy(x=>x.TENTHU).ToPagedList(page, pageSize);
+          }
+
 
           public List<SearchingPetModel> GetListSelectPet(string namePet, string nameKind)
           {

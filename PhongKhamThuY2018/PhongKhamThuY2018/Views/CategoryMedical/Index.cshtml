@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Models.FrameWork.THUOC>
+﻿@model PagedList.IPagedList<Models.FrameWork.LOAITHUOC>
 @using PagedList.Mvc
 
 
@@ -8,7 +8,7 @@
 }
 
 
-<h3 class="page-title">Quản lý kho thuốc</h3>
+<h3 class="page-title">Quản lý loại thuốc</h3>
 <!-- BORDERED TABLE -->
 <div class="panel">
 
@@ -23,7 +23,7 @@
         }
 
         <div style="margin-bottom:2%;margin-top:2%">
-            @using (Html.BeginForm("Index", "Category", FormMethod.Get))
+            @using (Html.BeginForm("Index", "CategoryMedical", FormMethod.Get))
             {
                 <div class="col-md-6">
                     <div class="input-group">
@@ -34,7 +34,7 @@
             }
 
             <div class="row">
-                <a href="/Category/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</a>
+                <a href="/CategoryMedical/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</a>
 
             </div>
 
@@ -43,12 +43,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Tên thuốc</th>
-                        <th>Loại thuốc</th>
-                        <th>Đơn vị</th>
-                        <th>Ngày nhập</th>
-                        <th>Số lượng</th>
+                       
+                        <th>Tên loại thuốc</th>
                         <th>Trạng thái</th>
                         <th></th>
                     </tr>
@@ -57,12 +53,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.MATHUOC</td>
-                            <td>@item.TENTHUOC</td>
-                            <td>@item.LOAITHUOC.TENLOAITHUOC</td>
-                            <td>@item.DONVITHUOC.TENDONVI</td>
-                            <td>@item.NGAYNHAP.ToString("dd/MM/yyyy")</td>
-                            <td>@item.SOLUONG</td>
+                            <td>@item.TENLOAITHUOC</td>
                             <td>
                                 @if (@item.TINHTRANG == true)
                                 {
@@ -78,7 +69,7 @@
                                 }
                             </td>
                             <td>
-                                <a href="/Category/Edit/@item.MATHUOC" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="/CategoryMedical/Edit/@item.MALOAITHUOC" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
                             </td>
 
 

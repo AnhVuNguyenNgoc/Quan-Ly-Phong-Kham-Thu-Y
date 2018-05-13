@@ -16,7 +16,6 @@ namespace Models.FrameWork
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MAXN { get; set; }
 
         [Required]

@@ -11,18 +11,16 @@ namespace Models.ViewModel
        public int MATHUOC { get; set; }
 
        public string TENTHUOC { get; set; }
-
    
        public int SOLUONG { get; set; }
      
-       public DateTime HANSUDUNG { get; set; }
+       public DateTime? HANSUDUNG { get; set; }
 
        public double DONGIA { get; set; }
 
        public string HUONGDANSUDUNG { get; set; }
 
        public string TENDONVI { get; set; }
-
 
     }
 }

@@ -12,12 +12,11 @@ namespace Models.FrameWork
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SOTIEMPHONG()
         {
-            CTSOTIEMPHONG = new HashSet<CTSOTIEMPHONG>();
+            SOTIEMPHONG_CHITIET = new HashSet<SOTIEMPHONG_CHITIET>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MASO { get; set; }
+        public int MASOTIEMPHONG { get; set; }
 
         public int MATHU { get; set; }
 
@@ -25,7 +24,7 @@ namespace Models.FrameWork
         public DateTime NGAYCAP { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTSOTIEMPHONG> CTSOTIEMPHONG { get; set; }
+        public virtual ICollection<SOTIEMPHONG_CHITIET> SOTIEMPHONG_CHITIET { get; set; }
 
         public virtual THU THU { get; set; }
     }

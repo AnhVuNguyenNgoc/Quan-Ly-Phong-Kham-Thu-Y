@@ -14,16 +14,12 @@ namespace Models.FrameWork
         {
             BENHAN = new HashSet<BENHAN>();
             LICHKHAM = new HashSet<LICHKHAM>();
-            LICHSUKHAM = new HashSet<LICHSUKHAM>();
-            NOITRU = new HashSet<NOITRU>();
             PHAUTHUAT = new HashSet<PHAUTHUAT>();
             PHIEUXETNGHIEM = new HashSet<PHIEUXETNGHIEM>();
             SOTIEMPHONG = new HashSet<SOTIEMPHONG>();
-            THEODOITHU = new HashSet<THEODOITHU>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MATHU { get; set; }
 
         [Required]
@@ -55,12 +51,6 @@ namespace Models.FrameWork
         public virtual ICollection<LICHKHAM> LICHKHAM { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LICHSUKHAM> LICHSUKHAM { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NOITRU> NOITRU { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHAUTHUAT> PHAUTHUAT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -68,8 +58,5 @@ namespace Models.FrameWork
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SOTIEMPHONG> SOTIEMPHONG { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<THEODOITHU> THEODOITHU { get; set; }
     }
 }

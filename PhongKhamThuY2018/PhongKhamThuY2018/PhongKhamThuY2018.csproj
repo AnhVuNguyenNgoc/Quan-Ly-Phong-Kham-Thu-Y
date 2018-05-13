@@ -48,6 +48,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PagedList">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -170,19 +171,30 @@
     <Compile Include="Code\SessionHelper.cs" />
     <Compile Include="Code\UserSession.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CategoryMedicalController.cs" />
+    <Compile Include="Controllers\MedicalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
+    <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\MedicalRecordController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\NewPetViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="MyDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\testRport.mdf" />
+    <Content Include="App_Data\testRport_log.ldf">
+      <DependentUpon>testRport.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\demo.css" />
@@ -202,6 +214,7 @@
     <Content Include="assets\img\user5.png" />
     <Content Include="assets\scripts\jquery-ui.js" />
     <Content Include="assets\scripts\klorofil-common.js" />
+    <Content Include="assets\scripts\MedicalController.js" />
     <Content Include="assets\scripts\notify.js" />
     <Content Include="assets\vendor\bootstrap\css\bootstrap-theme.css" />
     <Content Include="assets\vendor\bootstrap\css\bootstrap-theme.min.css" />
@@ -1043,6 +1056,17 @@
     <Content Include="assets\vendor\linearicons\fonts\Linearicons-Free.ttf" />
     <Content Include="assets\vendor\linearicons\fonts\Linearicons-Free.woff" />
     <Content Include="assets\vendor\linearicons\fonts\Linearicons-Free.woff2" />
+    <Content Include="MyDataset.xsc">
+      <DependentUpon>MyDataset.xsd</DependentUpon>
+    </Content>
+    <None Include="MyDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="MyDataset.xss">
+      <DependentUpon>MyDataset.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1070,14 +1094,18 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Medical\Index.cshtml" />
+    <Content Include="Views\Medical\Create.cshtml" />
+    <Content Include="Views\Medical\Edit.cshtml" />
+    <Content Include="Views\MedicalRecord\Create.cshtml" />
+    <Content Include="Views\MedicalRecord\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Category\Create.cshtml" />
-    <Content Include="Views\Category\Edit.cshtml" />
-    <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\CategoryMedical\Index.cshtml" />
+    <Content Include="Views\CategoryMedical\Create.cshtml" />
+    <Content Include="Views\CategoryMedical\Edit.cshtml" />
+    <Content Include="Views\Pet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
@@ -1092,6 +1120,10 @@
       <Project>{0fcc511a-8353-491e-af1d-1d239f8eaea4}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\TestReport.rdlc" />
+    <EmbeddedResource Include="Report\testReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

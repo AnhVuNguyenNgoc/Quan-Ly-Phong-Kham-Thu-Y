@@ -9,27 +9,25 @@ namespace Models.FrameWork
     [Table("BENHAN")]
     public partial class BENHAN
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BENHAN()
-        {
-            CHITIETBENH = new HashSet<CHITIETBENH>();
-        }
-
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MABENHAN { get; set; }
 
-        public int? MATHU { get; set; }
+        public int MATHU { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NGAYKHAM { get; set; }
+        public DateTime NGAYKHAM { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime NGAYLANH { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string BENH { get; set; }
+
+        [Required]
+        public string TRIEUCHUNG { get; set; }
+
+        public int MATOA { get; set; }
+
+        public virtual TOATHUOC TOATHUOC { get; set; }
 
         public virtual THU THU { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETBENH> CHITIETBENH { get; set; }
     }
 }

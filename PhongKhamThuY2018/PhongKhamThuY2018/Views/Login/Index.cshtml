@@ -22,6 +22,9 @@
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
+
+
+
 </head>
 <body>
     <!-- WRAPPER -->
@@ -35,18 +38,17 @@
                                 <div class="logo text-center"><img src="/assets/img/logo-dark.png" alt="Klorofil Logo"></div>
                                 <p class="lead">Đăng nhập</p>
                             </div>
-
-                            @using(Html.BeginForm())
+                            @using (Html.BeginForm())
                             {
-                                
+
                                 @Html.AntiForgeryToken()
-                               
+
                                 @Html.ValidationSummary(true, null, new { @class = " text-danger" })
-                                
+
                                 <div class="form-group">
                                     <label for="signin-email" class="control-label sr-only">Tên tài khoản</label>
                                     @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Tên tài khoản", @value = "admin" })
-                                   
+
                                     @Html.ValidationMessageFor(model => model.UserName)
                                 </div>
                                 <div class="form-group">
@@ -64,14 +66,13 @@
                                     <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Quân mật khẩu?</a></span>
                                 </div>
                             }
-
                         </div>
                     </div>
                     <div class="right">
                         <div class="overlay"></div>
                         <div class="content text">
                             <h1 class="heading">Quản lý phòng khám thú y</h1>
-                            <p>Được tạo bởi : Team SGU</p>
+                            <p>SGU-Phân tích thiết kế hướng đối tượng</p>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -80,5 +81,6 @@
         </div>
     </div>
     <!-- END WRAPPER -->
+
 </body>
 </html>

@@ -12,23 +12,24 @@ namespace Models.FrameWork
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TOATHUOC()
         {
-            CHITIETBENH = new HashSet<CHITIETBENH>();
-            CHITIETTOA = new HashSet<CHITIETTOA>();
+            BENHAN = new HashSet<BENHAN>();
+            CTTOATHUOC = new HashSet<CTTOATHUOC>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MATOA { get; set; }
+        public int MATOATHUOC { get; set; }
 
-        public int THOIGIANSUDUNG { get; set; }
+        public int? THOIGIANSUDUNG { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NGAYKETOA { get; set; }
+        public DateTime NGAYKETOA { get; set; }
+
+        public double TONGTIEN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETBENH> CHITIETBENH { get; set; }
+        public virtual ICollection<BENHAN> BENHAN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETTOA> CHITIETTOA { get; set; }
+        public virtual ICollection<CTTOATHUOC> CTTOATHUOC { get; set; }
     }
 }

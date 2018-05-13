@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<Models.FrameWork.BENHAN>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="page-title">Quản lý bệnh án</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="col-md-12">
+                <div id="AlertClass" class="alert @TempData["AlertType"]  hide">@TempData["AlertMessage"]</div>
+            </div>
+        }
+
+        <div style="margin-bottom:2%;margin-top:2%">
+            @using (Html.BeginForm("Index", "MedicalRecord", FormMethod.Get))
+            {
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" value="@ViewBag.searchString" name="searchString" class="form-control" placeholder="Nhập tên thuốc cần tìm">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>Tìm kiếm</button></span>
+                    </div>
+                </div>
+            }
+
+
+            <div class="row">
+                <a href="@Url.Action("Report", new { id="PDF"})" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Test in danh sách thú</a>
+            </div>
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên thú</th>
+                        <th>Ngày khám</th>
+                        <th>Triệu chứng</th>
+                        <th>Bệnh</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MABENHAN</td>
+                            <td>@item.THU.TENTHU</td>
+                            <td>@item.NGAYKHAM.ToString("dd/MM/yyyy")</td>
+                            <td>@item.TRIEUCHUNG</td>
+                            <td>@item.BENH</td>
+                            <td>
+                                <a href="/MedicalRecord/Edit/@item.MABENHAN" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.searchString }), new PagedListRenderOptions()
+                {
+                    ContainerDivClasses = new[] { "pagination-container", "centerPage" }
+                })
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+@*<tr>
+        <td></td>
+        <td>@item.Status</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>*@
+
+

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Models.FrameWork.LOAITHUOC
+
+<h3 class="page-title">Thêm loại thuốc</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+    <div class="panel-body">
+
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+
+            @using (Html.BeginForm("Create", "CategoryMedical", FormMethod.Post))
+            {
+
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.TENLOAITHUOC)
+                    @Html.TextBoxFor(model => model.TENLOAITHUOC, new { @class = "form-control", @placeholder = "Tên loại thuốc" })
+                    @Html.ValidationMessageFor(model => model.TENLOAITHUOC, "", new { @class = "text-danger" })
+
+                </div>
+             
+        
+                <div class="form-group">
+                    <div class="form-check">
+
+                        @Html.CheckBoxFor(model => model.TINHTRANG, new { @class = "form-check-input" })
+                        @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.TINHTRANG, new { @class = "form-check-label" })
+
+                    </div>
+                </div>
+
+
+                <a href="/CategoryMedical/Index" class="btn btn-default"><i class="lnr lnr-cross-circle modifier-icon"></i>Hủy</a>
+                <button type="submit" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</button>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->

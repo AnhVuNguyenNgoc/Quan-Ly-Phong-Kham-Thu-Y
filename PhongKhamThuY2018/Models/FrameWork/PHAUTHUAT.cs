@@ -10,7 +10,6 @@ namespace Models.FrameWork
     public partial class PHAUTHUAT
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int MAPHAUTHUAT { get; set; }
 
         public int MATHU { get; set; }

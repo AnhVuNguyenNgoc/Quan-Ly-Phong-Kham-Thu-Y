@@ -19,6 +19,19 @@ namespace Models.DAO
             dbContext = new PhongKhamDbContext();
         }
 
+        //có duy nhật hay không ? 
+        public bool isUnique(THUOC entity)
+        {
+            THUOC  model = dbContext.THUOC.Where(x => x.TENTHUOC.Contains(entity.TENTHUOC)).FirstOrDefault();
+
+            if (model.TENTHUOC != null)
+            {
+                return false;
+            }
+            return true;
+             
+        }
+
         public int Insert(THUOC entity)
         {
             dbContext.THUOC.Add(entity);

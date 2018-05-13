@@ -12,59 +12,34 @@ namespace Models.FrameWork
         {
         }
 
+        public virtual DbSet<BACSI> BACSI { get; set; }
         public virtual DbSet<BENHAN> BENHAN { get; set; }
-        public virtual DbSet<CTEKIP> CTEKIP { get; set; }
-        public virtual DbSet<CTSOTIEMPHONG> CTSOTIEMPHONG { get; set; }
-        public virtual DbSet<CHITIETBENH> CHITIETBENH { get; set; }
-        public virtual DbSet<CHITIETTOA> CHITIETTOA { get; set; }
-        public virtual DbSet<CHITIETXN> CHITIETXN { get; set; }
-        public virtual DbSet<CHUYENMON> CHUYENMON { get; set; }
         public virtual DbSet<DONVITHUOC> DONVITHUOC { get; set; }
         public virtual DbSet<EKIP> EKIP { get; set; }
         public virtual DbSet<GIAKHAMBENH> GIAKHAMBENH { get; set; }
         public virtual DbSet<KHACHHANG> KHACHHANG { get; set; }
         public virtual DbSet<LICHKHAM> LICHKHAM { get; set; }
-        public virtual DbSet<LICHSUKHAM> LICHSUKHAM { get; set; }
         public virtual DbSet<LOAITHUOC> LOAITHUOC { get; set; }
         public virtual DbSet<LOAIXETNGHIEM> LOAIXETNGHIEM { get; set; }
-        public virtual DbSet<NOITRU> NOITRU { get; set; }
         public virtual DbSet<NGUOIDUNG> NGUOIDUNG { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIEN { get; set; }
         public virtual DbSet<PHAUTHUAT> PHAUTHUAT { get; set; }
         public virtual DbSet<PHIEUXETNGHIEM> PHIEUXETNGHIEM { get; set; }
         public virtual DbSet<SOTIEMPHONG> SOTIEMPHONG { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TIEMPHONG> TIEMPHONG { get; set; }
         public virtual DbSet<TOATHUOC> TOATHUOC { get; set; }
-        public virtual DbSet<THEODOITHU> THEODOITHU { get; set; }
         public virtual DbSet<THU> THU { get; set; }
         public virtual DbSet<THUOC> THUOC { get; set; }
-        public virtual DbSet<VATTU> VATTU { get; set; }
+        public virtual DbSet<CTTOATHUOC> CTTOATHUOC { get; set; }
+        public virtual DbSet<CHITIETXN> CHITIETXN { get; set; }
+        public virtual DbSet<SOTIEMPHONG_CHITIET> SOTIEMPHONG_CHITIET { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CTSOTIEMPHONG>()
-                .Property(e => e.THANHTIEN)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<CHITIETTOA>()
-                .Property(e => e.THANHTIEN)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<CHITIETXN>()
-                .Property(e => e.THANHTIEN)
-                .HasPrecision(19, 4);
-
-            modelBuilder.Entity<CHUYENMON>()
-                .HasMany(e => e.NHANVIEN)
-                .WithRequired(e => e.CHUYENMON1)
-                .HasForeignKey(e => e.CHUYENMON)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DONVITHUOC>()
-                .HasMany(e => e.THUOC)
-                .WithRequired(e => e.DONVITHUOC)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<BACSI>()
+                .HasMany(e => e.EKIP)
+                .WithOptional(e => e.BACSI)
+                .HasForeignKey(e => e.MABSCHINH);
 
             modelBuilder.Entity<EKIP>()
                 .HasMany(e => e.PHAUTHUAT)
@@ -72,12 +47,8 @@ namespace Models.FrameWork
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<GIAKHAMBENH>()
-                .Property(e => e.ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<GIAKHAMBENH>()
                 .Property(e => e.GIA)
-                .HasPrecision(19, 4);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.TEN)
@@ -90,10 +61,6 @@ namespace Models.FrameWork
             modelBuilder.Entity<LICHKHAM>()
                 .Property(e => e.DIADIEM)
                 .IsFixedLength();
-
-            modelBuilder.Entity<LICHSUKHAM>()
-                .Property(e => e.THANHTIEN)
-                .HasPrecision(19, 4);
 
             modelBuilder.Entity<LOAIXETNGHIEM>()
                 .Property(e => e.DONGIA)
@@ -112,21 +79,6 @@ namespace Models.FrameWork
                 .Property(e => e.PassWord)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.CTEKIP)
-                .WithOptional(e => e.NHANVIEN)
-                .HasForeignKey(e => e.MABS);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.EKIP)
-                .WithOptional(e => e.NHANVIEN)
-                .HasForeignKey(e => e.MABSCHINH);
-
-            modelBuilder.Entity<NHANVIEN>()
-                .HasMany(e => e.LICHSUKHAM)
-                .WithRequired(e => e.NHANVIEN)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<PHIEUXETNGHIEM>()
                 .Property(e => e.GIA)
                 .HasPrecision(19, 4);
@@ -137,8 +89,9 @@ namespace Models.FrameWork
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SOTIEMPHONG>()
-                .HasMany(e => e.CTSOTIEMPHONG)
+                .HasMany(e => e.SOTIEMPHONG_CHITIET)
                 .WithRequired(e => e.SOTIEMPHONG)
+                .HasForeignKey(e => e.MASO)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TIEMPHONG>()
@@ -146,13 +99,20 @@ namespace Models.FrameWork
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<TIEMPHONG>()
-                .HasMany(e => e.CTSOTIEMPHONG)
+                .HasMany(e => e.SOTIEMPHONG_CHITIET)
                 .WithRequired(e => e.TIEMPHONG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TOATHUOC>()
-                .HasMany(e => e.CHITIETBENH)
+                .HasMany(e => e.BENHAN)
                 .WithRequired(e => e.TOATHUOC)
+                .HasForeignKey(e => e.MATOA)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TOATHUOC>()
+                .HasMany(e => e.CTTOATHUOC)
+                .WithRequired(e => e.TOATHUOC)
+                .HasForeignKey(e => e.MATOA)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<THU>()
@@ -160,12 +120,7 @@ namespace Models.FrameWork
                 .IsFixedLength();
 
             modelBuilder.Entity<THU>()
-                .HasMany(e => e.LICHSUKHAM)
-                .WithRequired(e => e.THU)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<THU>()
-                .HasMany(e => e.NOITRU)
+                .HasMany(e => e.BENHAN)
                 .WithRequired(e => e.THU)
                 .WillCascadeOnDelete(false);
 
@@ -185,12 +140,16 @@ namespace Models.FrameWork
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<THUOC>()
-                .HasMany(e => e.CHITIETTOA)
-                .WithOptional(e => e.THUOC)
-                .HasForeignKey(e => e.MATOA);
+                .HasMany(e => e.CTTOATHUOC)
+                .WithRequired(e => e.THUOC)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<VATTU>()
-                .Property(e => e.GIA)
+            modelBuilder.Entity<CHITIETXN>()
+                .Property(e => e.THANHTIEN)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<SOTIEMPHONG_CHITIET>()
+                .Property(e => e.THANHTIEN)
                 .HasPrecision(19, 4);
         }
     }

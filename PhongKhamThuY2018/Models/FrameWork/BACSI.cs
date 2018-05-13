@@ -6,23 +6,21 @@ namespace Models.FrameWork
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("NHANVIEN")]
-    public partial class NHANVIEN
+    [Table("BACSI")]
+    public partial class BACSI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NHANVIEN()
+        public BACSI()
         {
-            CTEKIP = new HashSet<CTEKIP>();
             EKIP = new HashSet<EKIP>();
-            LICHSUKHAM = new HashSet<LICHSUKHAM>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MANV { get; set; }
+        public int MABACSI { get; set; }
 
+        [Required]
         [StringLength(50)]
-        public string TENNV { get; set; }
+        public string TENBACSI { get; set; }
 
         public int TUOI { get; set; }
 
@@ -32,15 +30,9 @@ namespace Models.FrameWork
 
         public int CHUYENMON { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTEKIP> CTEKIP { get; set; }
-
-        public virtual CHUYENMON CHUYENMON1 { get; set; }
+        public bool TINHTRANG { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EKIP> EKIP { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LICHSUKHAM> LICHSUKHAM { get; set; }
     }
 }

@@ -13,12 +13,20 @@
 
         <div class=" col-sm-12 col-md-12 col-lg-12">
 
-            @using (Html.BeginForm("Create", "Category", FormMethod.Post))
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div class="col-md-12">
+                    <div id="AlertClass" class="alert @TempData["AlertType"]  hide">@TempData["AlertMessage"]</div>
+                </div>
+            }
+
+            @using (Html.BeginForm("Create", "Medical", FormMethod.Post))
             {
 
                 @Html.AntiForgeryToken()
 
-              
+
+
                 <div class="form-group">
 
                     @Html.LabelFor(model => model.TENTHUOC)
@@ -26,7 +34,7 @@
                     @Html.ValidationMessageFor(model => model.TENTHUOC, "", new { @class = "text-danger" })
 
                 </div>
-                       <div class="form-group">
+                <div class="form-group">
                     @Html.LabelFor(model => model.LOAITHUOC.TENLOAITHUOC)
                     @Html.DropDownListFor(m => m.MALOAITHUOC, ViewBag.ListLoaiThuoc as SelectList, "--Chọn 1 loại thuốc-- ", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.LOAITHUOC.TENLOAITHUOC)
@@ -47,7 +55,7 @@
                     @Html.TextBoxFor(model => model.HUONGDANSUDUNG, new { @class = "form-control", @placeholder = "Hướng dẫn sử dụng" })
                     @Html.ValidationMessageFor(model => model.HUONGDANSUDUNG, "", new { @class = "text-danger" })
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     @Html.LabelFor(model => model.DONVITHUOC.TENDONVI)
 
                     @Html.DropDownListFor(m => m.MADONVI, ViewBag.ListThuoc as SelectList, "--Chọn 1 đơn vị-- ", new { @class = "form-control" })
@@ -68,11 +76,11 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</button>
-                <a href="/Category/Index" class="btn btn-default"><i class="lnr lnr-cross-circle modifier-icon"></i>Hủy</a>
+
+                <a href="/Medical/Index" class="btn btn-default"><i class="lnr lnr-cross-circle modifier-icon"></i>Hủy</a>
+                <button type="submit" class="btn btn-success" id="btn-add-medical"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</button>
             }
 
         </div>
     </div>
 </div>
-<!-- END BORDERED TABLE -->

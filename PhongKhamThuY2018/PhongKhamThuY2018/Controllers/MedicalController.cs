@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace PhongKhamThuY2018.Controllers
 {
-    public class CategoryController : BaseController
+    public class MedicalController : BaseController
     {
 
 
@@ -50,33 +50,43 @@ namespace PhongKhamThuY2018.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+
                 var catDAO = new MedicalDAO();
 
-                entity.NGAYNHAP = DateTime.Now;
-
-                int result = catDAO.Insert(entity);
-
-                if (result > 0)
+                if (catDAO.isUnique(entity))
                 {
-                    //Xuất thông báo thành công notification
+                    entity.NGAYNHAP = DateTime.Now;
 
+                    int result = catDAO.Insert(entity);
+
+                    if (result > 0)
+                    {
+                        //Xuất thông báo thành công notification
+
+                        SetAlert("Thêm " + entity.TENTHUOC + " thành công !!", "success");
+                        return RedirectToAction("Index", "Medical");
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Thêm không thành công !!");
+                    }
+
+                }else
+                {
                     SetAlert("Thêm " + entity.TENTHUOC + " thành công !!", "success");
-                    return RedirectToAction("Index", "Category");
-
+                    return RedirectToAction("Create");
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Thêm không thành công !!");
-                }
+                
             }
             // TODO: Add insert logic here
 
             return RedirectToAction("Index");
 
-
         }
 
-        //
+   
         // GET: /Category/Edit/5
         public ActionResult Edit(int id)
         {
@@ -112,7 +122,7 @@ namespace PhongKhamThuY2018.Controllers
 
                     SetAlert("Sửa " + cat.TENTHUOC + " thành công !!", "success");
 
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Medical");
                 }
                 else
                 {

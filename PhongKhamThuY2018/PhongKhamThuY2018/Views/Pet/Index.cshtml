@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<Models.FrameWork.THU>
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 class="page-title">Quản lý thú cưng</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="col-md-12">
+                <div id="AlertClass" class="alert @TempData["AlertType"]  hide">@TempData["AlertMessage"]</div>
+            </div>
+        }
+
+        <div style="margin-bottom:2%;margin-top:2%">
+            @using (Html.BeginForm("Index", "Pet", FormMethod.Get))
+            {
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" value="@ViewBag.searchString" name="searchString" class="form-control" placeholder="Nhập tên thuốc cần tìm">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>Tìm kiếm</button></span>
+                    </div>
+                </div>
+            }
+
+            <div class="row">
+                <a href="/Pet/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Thêm mới</a>
+
+            </div>
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên thú</th>
+                        <th>Tên chủ</th>
+                        <th>Màu lông</th>
+                        <th>Loài</th>
+                        <th>Giới tính</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MATHU</td>
+                            <td>@item.TENTHU</td>
+                            <td>@item.KHACHHANG.TEN</td>
+                            <td>@item.MAULONG</td>
+                            <td>@item.LOAI</td>
+                            <td>@item.GIOITINH</td>
+                            <td>
+                                <a href="/Pet/Edit/@item.MATHU" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = ViewBag.searchString }), new PagedListRenderOptions()
+                {
+                    ContainerDivClasses = new[] { "pagination-container", "centerPage" }
+                })
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+@*<tr>
+        <td></td>
+        <td>@item.Status</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>*@
+
+

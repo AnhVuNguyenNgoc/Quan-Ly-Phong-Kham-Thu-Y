@@ -9,10 +9,8 @@ namespace Models.FrameWork
     [Table("GIAKHAMBENH")]
     public partial class GIAKHAMBENH
     {
-        [StringLength(30)]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
-        [Column(TypeName = "money")]
         public decimal? GIA { get; set; }
 
         [Column(TypeName = "date")]

@@ -1,0 +1,77 @@
+
+
+<h3 class="page-title">Qu?n l? thu?c</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+
+        <div style="margin-bottom:2%;margin-top:2%">
+<form action="/Medical" method="get">                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" name="searchString" class="form-control" placeholder="Nh?p t?n thu?c c?n t?m">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>T?m ki?m</button></span>
+                    </div>
+                </div>
+</form>
+            <div class="row">
+                <a href="/Medical/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Th?m m?i</a>
+
+            </div>
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>T?n thu?c</th>
+                        <th>Lo?i thu?c</th>
+                        <th>??n v?</th>
+                        <th>Ng?y nh?p</th>
+                        <th>S? l??ng</th>
+                        <th>Tr?ng th?i</th>
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>paracetamol</td>
+                            <td>Thu?c s?</td>
+                            <td>V?</td>
+                            <td>12/04/2018</td>
+                            <td>1</td>
+                            <td>
+                                    <span class="badge bg-success">
+                                        C?n s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>thu?c ?au b?ng</td>
+                            <td>Thu?c ?au b?ng</td>
+                            <td>V?</td>
+                            <td>25/04/2018</td>
+                            <td>100</td>
+                            <td>
+                                    <span class="badge bg-danger">
+                                        H?t s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+
+
+

@@ -56,7 +56,7 @@ namespace PhongKhamThuY2018.Controllers
 
                     Session.Add(CommonConstants.USER_SESSION, usersession);
 
-                    return RedirectToAction("Index", "Medical");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

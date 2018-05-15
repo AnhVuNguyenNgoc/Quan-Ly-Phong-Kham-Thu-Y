@@ -2,260 +2,136 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
+<h3 class="page-title">Trang chủ</h3>
+<div class="panel">
+    <div class="panel-body">
         <div class="container-fluid">
-            <h3 class="page-title">Tables</h3>
             <div class="row">
-                <div class="col-md-6">
-                    <!-- BASIC TABLE -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Basic Table</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                <div class="col-md-3">
+                    <div class="card bg-primary">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <i class="lnr lnr-user modifier-icon" style="font-size:30px;opacity:0.5"></i>
+                            </div>
+                            <div class=" media-body media-text-right">
+                                <h2 class="color-white"> @ViewBag.totalKhach</h2>
+                                <p>Khách hàng</p>
+                            </div>
+
                         </div>
                     </div>
-                    <!-- END BASIC TABLE -->
                 </div>
-                <div class="col-md-6">
-                    <!-- TABLE NO PADDING -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Table Inside No Padding</h3>
+                <div class="col-md-3">
+                    <div class="card bg-dark-blue ">
+                        <div class="media-left meida media-middle">
+                            <i class="lnr lnr-diamond  modifier-icon" style="font-size:30px;opacity:0.5"></i>
                         </div>
-                        <div class="panel-body no-padding">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class=" media-body media-text-right">
+                            <h2 class="color-white"> @ViewBag.totalThu</h2>
+                            <p>Thú cưng</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-success">
+                        <div class="media-left meida media-middle">
+                            <i class="lnr lnr-pencil modifier-icon" style="font-size:30px;opacity:0.5"></i>
+                        </div>
+                        <div class=" media-body media-text-right">
+                            <h2 class="color-white">@ViewBag.totalBenhAn</h2>
+                            <p class="color-white">Bệnh án</p>
                         </div>
                     </div>
-                    <!-- END TABLE NO PADDING -->
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-danger p-20">
+                        <div class="media-left meida media-middle">
+                            <i class="lnr lnr-drop modifier-icon" style="font-size:30px;opacity:0.5"></i>
+                        </div>
+                        <div class=" media-body media-text-right">
+                            <h2 class="color-white"> @ViewBag.totalThuoc</h2>
+                            <p class="color-white">Thuốc</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- TABLE STRIPED -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Striped Row</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END TABLE STRIPED -->
-                </div>
-                <div class="col-md-6">
-                    <!-- TABLE HOVER -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Hover Row</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END TABLE HOVER -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- BORDERED TABLE -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Bordered Table</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END BORDERED TABLE -->
-                </div>
-                <div class="col-md-6">
-                    <!-- CONDENSED TABLE -->
-                    <div class="panel">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Condensed Table</h3>
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Steve</td>
-                                        <td>Jobs</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Simon</td>
-                                        <td>Philips</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Jane</td>
-                                        <td>Doe</td>
-                                       
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- END CONDENSED TABLE -->
-                </div>
-            </div>
+        
+
         </div>
+
+
+    </div>
+</div>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Biểu đồ bệnh án theo ngày</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div id="chart-container">
+                        <canvas id="bar-chart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+@section ClientSciptFile
+{
+
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script>
+        $(document).on('click', '.excel', function () {
+            window.location.href = '/Home/ExportToExcel/';
+        });
+
+
+
+        var repList=@Html.Raw(Json.Encode(ViewBag.Rep));
+
+        var categories=@Html.Raw(Json.Encode(ViewBag.Date));
+
+
+        var ctx=$("#bar-chart");
+
+        var barchart=new Chart(ctx,{
+
+            type:'line',
+            data:{
+                labels:categories,
+                datasets:[{
+                    label:"Biểu đồ theo loài thú cưng",
+                    data:repList,
+                    //backgroundColor:["rgba(242,166,,54,5)","rgb(0,170,255)","rgba(74,25,92,.5)"],
+                    borderColor:["rgb(0,170,255)"],
+                    borderWidth:5
+                }]
+            },
+
+            options:{
+
+                maintainAspectRatio:false,
+                scales:{xAxes:[{ticks:{beginAtZero:true}} ] },
+                legend:{display:false}
+            }
+
+
+        });
+
+    </script>
+
+}

@@ -12,7 +12,7 @@ namespace PhongKhamThuY2018.Controllers
     {
         //
         // GET: /CategoryMedical/
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 3)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var Cate = new CategoryMedicalDAO();
 

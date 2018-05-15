@@ -24,6 +24,12 @@ namespace Models.DAO
 
              return entity.MATHU;
          }
+
+          public THU Find(int id)
+          {
+              return dbContext.THU.Include("KHACHHANG").SingleOrDefault(x => x.MATHU == id);
+          }
+
           public List<THU> ListAll()
           {
               var result = dbContext.THU.Include("KHACHHANG").ToList();

@@ -31,7 +31,8 @@
 
                     @Html.LabelFor(model => model.TENTHUOC)
                     @Html.TextBoxFor(model => model.TENTHUOC, new { @class = "form-control", @placeholder = "Tên thuốc" })
-                    @Html.ValidationMessageFor(model => model.TENTHUOC, "", new { @class = "text-danger" })
+
+                    @Html.ValidationMessageFor(model => model.TENTHUOC)
 
                 </div>
                 <div class="form-group">
@@ -49,7 +50,13 @@
 
 
                 </div>
+                  <div class="form-group">
+                    @Html.LabelFor(model => model.DONGIA)
+                    @Html.TextBoxFor(model => model.DONGIA, new { @class = "form-control", @placeholder = "Gía thuốc" })
+                    @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+                </div>
 
+                
                 <div class="form-group">
                     @Html.LabelFor(model => model.HUONGDANSUDUNG)
                     @Html.TextBoxFor(model => model.HUONGDANSUDUNG, new { @class = "form-control", @placeholder = "Hướng dẫn sử dụng" })

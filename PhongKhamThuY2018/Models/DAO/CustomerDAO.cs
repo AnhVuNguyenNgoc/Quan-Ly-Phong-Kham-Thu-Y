@@ -24,6 +24,13 @@ namespace Models.DAO
              return entity.MAKH;
          }
 
+          public List<KHACHHANG> ListAll()
+          {
+              var result = dbContext.KHACHHANG.ToList();
+
+              return result;
+          }
+
         //  public bool Update(THUOC entity)
         //{
         //    try

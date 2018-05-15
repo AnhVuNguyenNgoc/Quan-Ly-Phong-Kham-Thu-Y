@@ -1,0 +1,64 @@
+
+
+<h3 class="page-title">Qu?n l? thu?c</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>T?n thu?c</th>
+                        <th>Lo?i thu?c</th>
+                        <th>??n v?</th>
+                        <th>Ng?y nh?p</th>
+                        <th>S? l??ng</th>
+                        <th>Tr?ng th?i</th>
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>paracetamol</td>
+                            <td>Thu?c s?</td>
+                            <td>V?</td>
+                            <td>12/04/2018</td>
+                            <td>1</td>
+                            <td>
+                                    <span class="badge bg-success">
+                                        C?n s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>thu?c ?au b?ng</td>
+                            <td>Thu?c ?au b?ng</td>
+                            <td>V?</td>
+                            <td>25/04/2018</td>
+                            <td>100</td>
+                            <td>
+                                    <span class="badge bg-danger">
+                                        H?t s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+
+
+

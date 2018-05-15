@@ -22,9 +22,9 @@ namespace Models.DAO
         //có duy nhật hay không ? 
         public bool isUnique(THUOC entity)
         {
-            THUOC  model = dbContext.THUOC.Where(x => x.TENTHUOC.Contains(entity.TENTHUOC)).FirstOrDefault();
+            THUOC  model = dbContext.THUOC.Where(x => x.TENTHUOC==(entity.TENTHUOC)).FirstOrDefault();
 
-            if (model.TENTHUOC != null)
+            if (model != null)
             {
                 return false;
             }
@@ -106,10 +106,12 @@ namespace Models.DAO
 
         public List<THUOC> ListAll()
         {
-            var res = dbContext.Database.SqlQuery<THUOC>("select * from THUOC").ToList();
+            var res = dbContext.THUOC.Include("LOAITHUOC").ToList();
 
             return res;
         }
+
+
         public List<THUOC> ListAllByCategory(int idCategory)
         {
             dbContext.Configuration.ProxyCreationEnabled = false;

@@ -26,7 +26,7 @@ namespace Models.DAO
              return entity.MABENHAN;
          }
 
-          public List<BENHAN> ListAll(BENHAN entity)
+          public List<BENHAN> ListAll()
           {
               var result = dbContext.BENHAN.Include("THU").ToList();
 

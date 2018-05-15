@@ -1,0 +1,312 @@
+
+<h3 class="page-title">Quản lý thú cưng</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+
+
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên thú</th>
+                        <th>Tên chủ</th>
+                        <th>Màu lông</th>
+                        <th>Loài</th>
+                        <th>Giới tính</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/1" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ki Ki 2</td>
+                            <td>Anh Vũ 2                      </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>C&#225;i       </td>
+                            <td>
+                                <a href="/Pet/Edit/2" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Ki Ki 3</td>
+                            <td>Anh Vũ 3                      </td>
+                            <td>V&#224;ng n&#226;u trắng</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>C&#225;i       </td>
+                            <td>
+                                <a href="/Pet/Edit/3" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/4" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/5" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/6" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/7" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/8" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/9" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/10" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ1                       </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/11" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/12" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/13" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/14" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/15" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/16" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/17" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>Ki Ki</td>
+                            <td>Vinh                          </td>
+                            <td>trắng</td>
+                            <td>M&#232;o</td>
+                            <td>C&#225;i       </td>
+                            <td>
+                                <a href="/Pet/Edit/18" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/19" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/20" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/21" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>Ki Ki</td>
+                            <td>Anh Vũ 123123                 </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/22" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>Cu đen</td>
+                            <td>Anh Vũ                        </td>
+                            <td>V&#224;ng n&#226;u</td>
+                            <td>Ch&#243; Fox</td>
+                            <td>Đực       </td>
+                            <td>
+                                <a href="/Pet/Edit/23" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                <a href="#" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                            </td>
+                        </tr>
+
+                </tbody>
+            </table>
+
+         
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+
+
+

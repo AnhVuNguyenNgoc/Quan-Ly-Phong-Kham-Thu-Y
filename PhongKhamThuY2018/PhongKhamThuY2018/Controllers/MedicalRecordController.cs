@@ -17,7 +17,7 @@ namespace PhongKhamThuY2018.Controllers
     {
         //
         // GET: /Prescription/
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 3)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var Cate = new MedicalRecordDAO();
 
@@ -185,7 +185,7 @@ namespace PhongKhamThuY2018.Controllers
         }
 
 
-        public ActionResult Report(string id)
+        public ActionResult ReportMedicalRecord(string id)
         {
             LocalReport lr = new LocalReport();
 
@@ -197,14 +197,12 @@ namespace PhongKhamThuY2018.Controllers
             }
             else
             {
-                return View("Index","Home");
+                return View("Index", "Home");
             }
-
 
             var petDAO = new PetDAO();
 
             List<THU> thu = petDAO.ListAll();
-
 
             ReportDataSource rd = new ReportDataSource("MyDataset", thu);
 
@@ -220,8 +218,8 @@ namespace PhongKhamThuY2018.Controllers
 
             "<DeviceInfo>" +
             "  <OutputFormat>" + id + "</OutputFormat>" +
-            "  <PageWidth>8.5in</PageWidth>" +
-            "  <PageHeight>11in</PageHeight>" +
+            "  <PageWidth>10in</PageWidth>" +
+            "  <PageHeight>10in</PageHeight>" +
             "  <MarginTop>0.5in</MarginTop>" +
             "  <MarginLeft>1in</MarginLeft>" +
             "  <MarginRight>1in</MarginRight>" +

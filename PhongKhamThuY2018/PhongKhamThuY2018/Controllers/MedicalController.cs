@@ -3,7 +3,9 @@ using Models.DAO;
 using Models.FrameWork;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,7 +17,7 @@ namespace PhongKhamThuY2018.Controllers
 
         //
         // GET: /Category/
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 3)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
             var Cate = new MedicalDAO();
 
@@ -33,11 +35,10 @@ namespace PhongKhamThuY2018.Controllers
         {
             var catDAO = new MedicalDAO();
 
-
             List<DONVITHUOC> ListThuoc = catDAO.ListAllThuoc();
             List<LOAITHUOC> ListLoaiThuoc = catDAO.ListAllLoaiThuoc();
 
-            ViewBag.ListThuoc = new SelectList(ListThuoc,"MADONVI", "TENDONVI");
+            ViewBag.ListThuoc = new SelectList(ListThuoc, "MADONVI", "TENDONVI");
             ViewBag.ListLoaiThuoc = new SelectList(ListLoaiThuoc, "MALOAITHUOC", "TENLOAITHUOC");
 
             return View();
@@ -48,10 +49,9 @@ namespace PhongKhamThuY2018.Controllers
         [HttpPost]
         public ActionResult Create(THUOC entity)
         {
+
             if (ModelState.IsValid)
             {
-                
-
                 var catDAO = new MedicalDAO();
 
                 if (catDAO.isUnique(entity))
@@ -73,20 +73,23 @@ namespace PhongKhamThuY2018.Controllers
                         ModelState.AddModelError("", "Thêm không thành công !!");
                     }
 
-                }else
+                }
+                else
                 {
-                    SetAlert("Thêm " + entity.TENTHUOC + " thành công !!", "success");
+                    SetAlert("Thêm " + entity.TENTHUOC + " không thành công !!", "error");
                     return RedirectToAction("Create");
                 }
-                
+
             }
             // TODO: Add insert logic here
 
-            return RedirectToAction("Index");
+            return View(entity);
+
+
 
         }
 
-   
+
         // GET: /Category/Edit/5
         public ActionResult Edit(int id)
         {
@@ -97,7 +100,7 @@ namespace PhongKhamThuY2018.Controllers
             List<DONVITHUOC> ListThuoc = catDAO.ListAllThuoc();
             List<LOAITHUOC> ListLoaiThuoc = catDAO.ListAllLoaiThuoc();
 
-            ViewBag.ListThuoc = new SelectList(ListThuoc, "MADONVI", "TENDONVI",model.MADONVI);
+            ViewBag.ListThuoc = new SelectList(ListThuoc, "MADONVI", "TENDONVI", model.MADONVI);
 
             ViewBag.ListLoaiThuoc = new SelectList(ListLoaiThuoc, "MALOAITHUOC", "TENLOAITHUOC", model.MALOAITHUOC);
 
@@ -157,5 +160,71 @@ namespace PhongKhamThuY2018.Controllers
                 return View();
             }
         }
+
+
+
+        public void ExportToExcel()
+        {
+            var petDAO = new MedicalDAO();
+
+            var listThu = petDAO.ListAll();
+
+            string Filename = "ThuocExcel" + DateTime.Now.ToString("mm_dd_yyy_hh_ss_tt") + ".xls";
+
+            string FolderPath = HttpContext.Server.MapPath("/ExcelFiles/");
+            string FilePath = System.IO.Path.Combine(FolderPath, Filename);
+
+
+            //Step-1: Checking: If file name exists in server then remove from server.
+            if (System.IO.File.Exists(FilePath))
+            {
+                System.IO.File.Delete(FilePath);
+            }
+
+            //Step-2: Get Html Data & Converted to String
+            string HtmlResult = RenderRazorViewToString("~/Views/Medical/GenerateExcel.cshtml", listThu);
+
+            //Step-4: Html Result store in Byte[] array
+            byte[] ExcelBytes = Encoding.UTF8.GetBytes(HtmlResult);
+
+            //Step-5: byte[] array converted to file Stream and save in Server
+            using (Stream file = System.IO.File.OpenWrite(FilePath))
+            {
+                file.Write(ExcelBytes, 0, ExcelBytes.Length);
+            }
+
+            //Step-6: Download Excel file 
+            Response.ContentType = "application/vnd.ms-excel";
+            Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileName(Filename));
+
+
+            Response.WriteFile(FilePath);
+
+            Response.End();
+            Response.Flush();
+
+
+        }
+
+        protected string RenderRazorViewToString(string viewName, object model)
+        {
+            if (model != null)
+            {
+                ViewData.Model = model;
+            }
+
+            using (StringWriter sw = new StringWriter())
+            {
+
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+
+                ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+
+                return sw.GetStringBuilder().ToString();
+            }
+        }
+
     }
 }

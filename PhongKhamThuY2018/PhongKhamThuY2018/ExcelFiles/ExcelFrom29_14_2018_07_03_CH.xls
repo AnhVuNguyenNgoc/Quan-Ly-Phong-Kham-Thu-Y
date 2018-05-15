@@ -1,0 +1,64 @@
+
+
+<h3 class="page-title">Quản lý thuốc</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên thuốc</th>
+                        <th>Loại thuốc</th>
+                        <th>Đơn vị</th>
+                        <th>Ngày nhập</th>
+                        <th>Số lượng</th>
+                        <th>Trạng thái</th>
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>paracetamol</td>
+                            <td>Thuốc sổ</td>
+                            <td>Vỉ</td>
+                            <td>12/04/2018</td>
+                            <td>1</td>
+                            <td>
+                                    <span class="badge bg-success">
+                                        Còn sử dụng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>thuốc đau bụng</td>
+                            <td>Thuốc đau bụng</td>
+                            <td>Vỉ</td>
+                            <td>25/04/2018</td>
+                            <td>100</td>
+                            <td>
+                                    <span class="badge bg-danger">
+                                        Hết sử dụng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+
+
+

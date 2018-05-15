@@ -1,13 +1,8 @@
-﻿
+
 
 <!doctype html>
 <html lang="en">
 <head>
-
-
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-
-
     <title>Tables | Klorofil - Free Bootstrap Dashboard Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,12 +25,7 @@
 
 </head>
 <body>
-    @*<div class="loading" id="load_screen">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>*@
+    
     <!-- WRAPPER -->
     <div id="wrapper">
         <!-- NAVBAR -->
@@ -66,7 +56,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Trợ giúp</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Tr? gi?p</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Basic Use</a></li>
                                 <li><a href="#">Working With Data</a></li>
@@ -75,16 +65,16 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            @{ var username = (PhongKhamThuY2018.Code.UserSession)Session["USER_SEESION"]; }
+
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/img/user.png" class="img-circle" alt="Avatar"> <span>
-                                    @(username.UserName)
+                                    admin
                                 </span> <i class="icon-submenu lnr lnr-chevron-down"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="lnr lnr-user"></i> <span>Thông tin</span></a></li>
-                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Tin nhắn</span></a></li>
-                                <li><a href="@Url.Action("Logout", "Login")"><i class="lnr lnr-exit"></i> <span>Đăng xuất</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-user"></i> <span>Th?ng tin</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Tin nh?n</span></a></li>
+                                <li><a href="/Login/Logout"><i class="lnr lnr-exit"></i> <span>??ng xu?t</span></a></li>
                             </ul>
                         </li>
 
@@ -100,64 +90,46 @@
                     <ul class="nav">
 
                       
-                        @functions{
-                            public bool GetViewContextForController(string routeData)
-                            {
-                                if (ViewContext.RouteData.Values["controller"].ToString().Equals(routeData))
-                                {
-                                    return true;
-                                }
-                                return false;
-                            }
-                            public bool GetViewContextForAction(string actionData)
-                            {
-                                if (ViewContext.RouteData.Values["action"].ToString().Equals(actionData))
-                                {
-                                    return true;
-                                }
-                                return false;
-                            }
-                        }
 
-                        <li><a href="@Url.Action("Index", "Home")" @(GetViewContextForController("Home") ? "class=active" : "") class=""><i class="lnr lnr-home"></i> <span>Trang chủ</span></a></li>
+                        <li><a href="/Home"  class=""><i class="lnr lnr-home"></i> <span>Trang ch?</span></a></li>
                         <li>
-                            <a href="#subPages" data-toggle="collapse" @(GetViewContextForController("MedicalRecord") ? "class=active" : "class=collapsed")><i class="lnr lnr-pencil"></i> <span>Quản lý khám bệnh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subPages" @( GetViewContextForController("MedicalRecord") ? "class='collapse in'" : "class=collapse")>
+                            <a href="#subPages" data-toggle="collapse" class=collapsed><i class="lnr lnr-pencil"></i> <span>Qu?n l? kh?m b?nh</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subPages" class=collapse>
                                 <ul class="nav">
-                                    <li><a href="@Url.Action("Create", "MedicalRecord")" @(GetViewContextForAction("Create") && GetViewContextForController("MedicalRecord") ? "class=active" : "")>Lập bệnh án</a></li>
-                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(!GetViewContextForAction("Create") && GetViewContextForController("MedicalRecord") ? "class=active" : "") class="">Dánh sách bệnh án</a></li>
+                                    <li><a href="/MedicalRecord/Create" >L?p b?nh ?n</a></li>
+                                    <li><a href="/MedicalRecord"  class="">D?nh s?ch b?nh ?n</a></li>
 
-                                    <li><a href="#">Lập phiếu xét nghiệm</a></li>
-                                    <li><a href="page-login.html" class="">Danh sách xét nghiệm</a></li>
+                                    <li><a href="#">L?p phi?u x?t nghi?m</a></li>
+                                    <li><a href="page-login.html" class="">Danh s?ch x?t nghi?m</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a href="#subDichVu" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database "></i> <span>Quản lý dịch vụ</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <a href="#subDichVu" data-toggle="collapse" class="collapsed"><i class="lnr lnr-database "></i> <span>Qu?n l? d?ch v?</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                             <div id="subDichVu" class="collapse ">
                                 <ul class="nav">
-                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Create") && ViewContext.RouteData.Values["controller"].ToString().Equals("MedicalRecord") ? "class=active" : "")>Lập phiếu phấu thuật</a></li>
-                                    <li><a href="page-login.html" class="">Danh sách phẫu thuật</a></li>
+                                    <li><a href="/MedicalRecord" >L?p phi?u ph?u thu?t</a></li>
+                                    <li><a href="page-login.html" class="">Danh s?ch ph?u thu?t</a></li>
 
-                                    <li><a href="@Url.Action("Index", "MedicalRecord")" @(ViewContext.RouteData.Values["action"].ToString().Equals("Create") && ViewContext.RouteData.Values["controller"].ToString().Equals("MedicalRecord") ? "class=active" : "")>Lập phiếu tiêm phòng</a></li>
-                                    <li><a href="page-login.html" class="">Sổ tiêm phòng</a></li>
+                                    <li><a href="/MedicalRecord" >L?p phi?u ti?m ph?ng</a></li>
+                                    <li><a href="page-login.html" class="">S? ti?m ph?ng</a></li>
 
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a href="#subKho" data-toggle="collapse" @( GetViewContextForController("Medical") || GetViewContextForController("CategoryMedical") ? "class=active" : "class=collapsed")><i class="lnr lnr-store"></i> <span>Quản lý kho thuốc</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="subKho" @( GetViewContextForController("Medical") || GetViewContextForController("CategoryMedical") ? "class='collapse in'" : "class=collapse")>
+                            <a href="#subKho" data-toggle="collapse" class=active><i class="lnr lnr-store"></i> <span>Qu?n l? kho thu?c</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="subKho" class=&#39;collapse in&#39;>
                                 <ul class="nav">
-                                    <li><a href="@Url.Action("Index", "Medical")" @(GetViewContextForController("Medical") ? "class=active" : "")>Kho thuốc</a></li>
-                                    <li><a href="@Url.Action("Index", "CategoryMedical")" @(GetViewContextForController("CategoryMedical") ? "class=active" : "") class="">Kho loại thuốc</a></li>
-                                    <li><a href="page-login.html" class="">Đơn vị thuốc</a></li>
+                                    <li><a href="/Medical" class=active>Kho thu?c</a></li>
+                                    <li><a href="/CategoryMedical"  class="">Kho lo?i thu?c</a></li>
+                                    <li><a href="page-login.html" class="">??n v? thu?c</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Quản lý khách hàng</span></a></li>
-                        <li><a href="@Url.Action("Index", "Pet")" @(GetViewContextForController("Pet") ? "class=active" : "") class=""><i class="lnr lnr-diamond "></i> <span>Quản lý thú cưng</span></a></li>
-                        <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Quản lý tài chính</span></a></li>
+                        <li><a href="panels.html" class=""><i class="lnr lnr-user"></i> <span>Qu?n l? kh?ch h?ng</span></a></li>
+                        <li><a href="/Pet"  class=""><i class="lnr lnr-diamond "></i> <span>Qu?n l? th? c?ng</span></a></li>
+                        <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Qu?n l? t?i ch?nh</span></a></li>
 
 
 
@@ -172,7 +144,85 @@
             <!-- MAIN CONTENT -->
             <div class="main-content">
                 <div class="container-fluid">
-                    @RenderBody()
+                    
+
+
+<h3 class="page-title">Qu?n l? thu?c</h3>
+<!-- BORDERED TABLE -->
+<div class="panel">
+
+
+    <div class="panel-body">
+
+
+        <div style="margin-bottom:2%;margin-top:2%">
+<form action="/Medical" method="get">                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" name="searchString" class="form-control" placeholder="Nh?p t?n thu?c c?n t?m">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary"><i class="lnr lnr-magnifier modifier-icon"></i>T?m ki?m</button></span>
+                    </div>
+                </div>
+</form>
+            <div class="row">
+                <a href="/Medical/Create" class="btn btn-success"><i class="lnr lnr-plus-circle modifier-icon"></i>Th?m m?i</a>
+
+            </div>
+
+        </div>
+        <div class=" col-sm-12 col-md-12 col-lg-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>T?n thu?c</th>
+                        <th>Lo?i thu?c</th>
+                        <th>??n v?</th>
+                        <th>Ng?y nh?p</th>
+                        <th>S? l??ng</th>
+                        <th>Tr?ng th?i</th>
+                 
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>paracetamol</td>
+                            <td>Thu?c s?</td>
+                            <td>V?</td>
+                            <td>12/04/2018</td>
+                            <td>1</td>
+                            <td>
+                                    <span class="badge bg-success">
+                                        C?n s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>thu?c ?au b?ng</td>
+                            <td>Thu?c ?au b?ng</td>
+                            <td>V?</td>
+                            <td>25/04/2018</td>
+                            <td>100</td>
+                            <td>
+                                    <span class="badge bg-danger">
+                                        H?t s? d?ng
+                                    </span>
+                            </td>
+                      
+                        </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<!-- END BORDERED TABLE -->
+
+
+
+
                 </div>
             </div>
             <!-- END MAIN CONTENT -->
@@ -188,8 +238,8 @@
     <!-- END WRAPPER -->
     <!-- Javascript -->
 
-    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
@@ -200,9 +250,9 @@
         });
 
     </script>
-    <script src="~/assets/scripts/klorofil-common.js"></script>
+    <script src="/assets/scripts/klorofil-common.js"></script>
 
-    @RenderSection("ClientSciptFile", false)
+    
 
 </body>
 </html>

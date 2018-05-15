@@ -1,4 +1,4 @@
-namespace Models.FrameWork
+﻿namespace Models.FrameWork
 {
     using System;
     using System.Collections.Generic;
@@ -19,8 +19,9 @@ namespace Models.FrameWork
         [Key]
         public int MATHUOC { get; set; }
 
-        [Required]
+       
         [StringLength(50)]
+        [Required(ErrorMessage = "Bạn chưa nhập tên thuốc")]
         public string TENTHUOC { get; set; }
 
         public int SOLUONG { get; set; }
